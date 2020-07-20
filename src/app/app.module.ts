@@ -10,6 +10,19 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { LoginComponent } from './auth/login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+
+const materialComponent = [
+  MatInputModule,
+  MatButtonModule,
+  MatGridListModule,
+  MatToolbarModule,
+  MatIconModule
+];
 
 @NgModule({
   declarations: [
@@ -21,7 +34,8 @@ import { LoginComponent } from './auth/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    materialComponent
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

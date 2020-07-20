@@ -11,8 +11,8 @@ const routes: Routes = [
   // },
   {
     path: '',
-    // component: LoginComponent
-    loadChildren: './auth/auth.module#AuthModule',
+    component: LoginComponent,
+    // loadChildren: './auth/auth.module#AuthModule',
     // loadChildren: './auth/auth.module#AuthRoutingModule',
     canLoad: [AuthGuard]
   },

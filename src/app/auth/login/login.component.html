@@ -1,29 +1,68 @@
-<div class="jumbotron bg-transparent text-center">
-  <div *ngIf="!user" class="card text-center">
-    <h6 class="card-header">
-      Social Login Demo
-    </h6>
-    <div class="card-block">
-      <h4 class="card-title">Not signed in</h4>
-      <p class="card-text">Sign in with</p>
-    </div>
-    <div class="card-block">
-      <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
-      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div *ngIf="!user" class="text-center">
+  <div>
+    <h2>
+      <b>ลงชื่อเข้าใช้</b>
+    </h2>
+    <form>
+      <mat-grid-list [cols]="12" [rowHeight]="55">
+        <mat-grid-tile [colspan]="2" [rowspan]="1"></mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <label for="email-login">อีเมล</label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <input type="email" class="form-control" id="email-login">
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="12" [rowHeight]="55">
+        <mat-grid-tile [colspan]="2" [rowspan]="1"></mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <label for="password-login">รหัสผ่าน</label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <input type="password" class="form-control" id="password-login">
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="12" [rowHeight]="70">
+        <mat-grid-tile [colspan]="4" [rowspan]="1"></mat-grid-tile>
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <button mat-flat-button type="submit" color="primary">ลงชื่อเข้าใช้</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+    <hr width="80%">
+    <div>
+      <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span
+          class="fa fa-google"></span></button>
+      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span
+          class="fa fa-facebook"></span></button>
     </div>
   </div>
-  <div *ngIf="user" class="card text-center">
-    <h6 class="card-header">
-      Social Login Demo
-    </h6>
-    <div class="card-block"></div>
-    <img *ngIf="user.photoUrl" class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
-    <div class="card-block">
-      <h4 class="card-title">{{ user.name }}</h4>
-      <p class="card-text">{{ user.email }}</p>
-    </div>
-    <div class="card-block">
-      <button class="btn btn-danger" (click)="signOut()">Sign out</button>
-    </div>
+</div>
+<div *ngIf="user" class="text-center">
+  <h6>
+    Social Login Demo
+  </h6>
+  <div></div>
+  <img *ngIf="user.photoUrl" class="img-responsive photo" src="{{ user.photoUrl }}">
+  <div>
+    <h4>{{ user.name }}</h4>
+    <p>{{ user.email }}</p>
+  </div>
+  <div>
+    <button class="btn btn-danger" (click)="signOut()">Sign out</button>
   </div>
 </div>
