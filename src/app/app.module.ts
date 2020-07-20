@@ -10,18 +10,26 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { LoginComponent } from './auth/login/login.component';
+import { HomeComponent } from './home/home.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+const materialComponent = [
+  MatToolbarModule
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    materialComponent
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
