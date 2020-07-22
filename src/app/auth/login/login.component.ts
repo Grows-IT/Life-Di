@@ -25,10 +25,17 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithFB() {
+    const userAgent = window.navigator.userAgent;
+    const date = new Date().getTime();
+    console.log(userAgent + ' ' + date);
+
     return this.authSerivce.signInWithFB();
   }
 
   signOut() {
+    const date = new Date().getTime();
+    console.log(date);
+
     return this.authSerivce.signOut();
   }
 }

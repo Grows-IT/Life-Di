@@ -10,6 +10,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { HomeComponent } from './home/home.component';
+import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from './auth/login/login.component';
 import { MatInputModule } from '@angular/material/input';
@@ -17,8 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { SignupComponent } from './auth/signup/signup.component';
 
-const materialComponent = [
+const MaterialComponent = [
   MatInputModule,
   MatButtonModule,
   MatGridListModule,
@@ -31,6 +33,7 @@ const materialComponent = [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ const materialComponent = [
     BrowserAnimationsModule,
     SocialLoginModule,
     HttpClientModule,
-    materialComponent
+    MaterialComponent,
+    NgbPaginationModule,
+    NgbAlertModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

@@ -1,62 +1,58 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
-
 <div *ngIf="!user" class="text-center">
-  <div>
-    <h2>
+  <div class="container-fulid">
+    <h2 style="margin-bottom: 35px; color: #2C4975;">
       <b>ลงชื่อเข้าใช้</b>
     </h2>
     <form>
-      <mat-grid-list [cols]="12" [rowHeight]="55">
-        <mat-grid-tile [colspan]="2" [rowspan]="1"></mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <label for="email-login">อีเมล</label>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          <input type="email" class="form-control" id="email-login">
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list cols="12" [rowHeight]="55">
-        <mat-grid-tile [colspan]="2" [rowspan]="1"></mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <label for="password-login">รหัสผ่าน</label>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          <input type="password" class="form-control" id="password-login">
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list cols="12" [rowHeight]="70">
-        <mat-grid-tile [colspan]="4" [rowspan]="1"></mat-grid-tile>
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          <button mat-flat-button type="submit" color="primary">ลงชื่อเข้าใช้</button>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-10 row justify-content-center">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <label for="email-login">อีเมล</label>
+          </div>
+          <div class="col-md-3 col-sm-7">
+            <input type="email" class="form-control" id="email-login">
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-10 row justify-content-center">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <label for="email-login">รหัสผ่าน</label>
+          </div>
+          <div class="col-md-3 col-sm-7">
+            <input type="password" class="form-control" id="password-login">
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center" style="margin: 35px 0;">
+        <div class="col-md-5 col-sm-8 row">
+          <div class="col-12">
+            <button mat-flat-button type="submit" color="primary" id="button-login">ลงชื่อเข้าใช้</button>
+          </div>
+        </div>
+      </div>
     </form>
     <hr width="80%">
-    <div>
-      <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span
-          class="fa fa-google"></span></button>
-      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span
-          class="fa fa-facebook"></span></button>
+    <div class="row justify-content-center" style="margin-top: 35px;">
+      <div class="col-md-5 col-sm-8 row">
+        <div class="col-12">
+          <button type=" button" (click)="signInWithFB()" mat-flat-button id="loginWithFacebook">เข้าสู่ระบบด้วย
+            Facebook</button>
+        </div>
+      </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-sm-8 row">
+        <div class="col-12">
+          <button type="button" (click)="signInWithGoogle()" mat-flat-button id="loginWithGoogle">เข้าสู่ระบบด้วย
+            Google</button>
+        </div>
+      </div>
+    </div><br>
+    <p style="color: #2C4975;">ไม่มีบัญชี? <a href="/signup"><label>สร้างบัญชี</label></a></p>
   </div>
 </div>
 <div *ngIf="user" class="text-center">
-  <h6>
-    Social Login Demo
-  </h6>
-  <div></div>
   <img *ngIf="user.photoUrl" class="img-responsive photo" src="{{ user.photoUrl }}">
   <div>
     <h4>{{ user.name }}</h4>

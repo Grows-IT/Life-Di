@@ -1,0 +1,34 @@
+#email-login,
+#password-login {
+  border-radius: 15px;
+}
+.row.justify-content-center {
+  margin: 10px 0;
+}
+#button-login {
+  background: #dd598c;
+  border-radius: 50px;
+  width: 90%;
+  min-width: 200px;
+}
+#loginWithGoogle {
+  background: #de5246;
+  color: white;
+  outline: none !important;
+  border-radius: 50px;
+  width: 90%;
+  min-width: 200px;
+  border: 0;
+}
+#loginWithFacebook {
+  background: #3b5998;
+  color: white;
+  outline: none !important;
+  border-radius: 50px;
+  width: 90%;
+  min-width: 200px;
+  border: 0;
+}
+label {
+  color: #dd598c;
+}
