@@ -23,8 +23,7 @@ const routes: Routes = [
     component: SignupComponent
   }, {
     path: 'profile',
-    component: ProfileComponent,
-    canLoad: [AuthGuard]
+    component: ProfileComponent
   }
 ];
 

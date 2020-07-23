@@ -1,0 +1,44 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <img src="assets\logo life-di.png" routerLink="/" height="70px" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="ค้นหา" aria-label="Search" />
+        <button class="btn my-2 my-sm-0 searchbutton" type="submit">
+          ค้นหา
+        </button>
+      </form>
+      <li class="nav-item">
+        <a class="nav-link" href="#">คอร์สเรียน</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">กระทู้</a>
+      </li>
+    </ul>
+  </div>
+  <div ngbDropdown class="d-inline-block">
+    <ul class="navbar-nav ml-auto" *ngIf="user">
+      <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+        <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+          <img src="assets/icon/person.png" height="30px" />
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+          <a ngbDropdownItem disabled>สวัสดีคุณ {{ user.firstName }}</a>
+          <a ngbDropdownItem routerLink="/profile">ข้อมูลส่วนตัว</a>
+          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">ตั้งค่า</a>
+          <a ngbDropdownItem (click)="signout()">ลงชื่อออก</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!user">
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
