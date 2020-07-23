@@ -59,15 +59,18 @@ export class AuthService {
   }
 
   getUser() {
-    // return this.user.pipe(
-    return this.authService.authState.pipe(
-      (user) => {
-        // console.log(user);
+    // const _u = this.getUserFromStorage();
+    // const user = JSON.parse(_u);
+    // return user;
+    // return this.getUserFromStorage();
+    // return this.user;
+    return this.getUserFromStorage().pipe(
+      map((user) => {
         if (user) {
           return user;
         }
         return;
-      }
+      })
     );
   }
 
@@ -77,7 +80,7 @@ export class AuthService {
       this._token.next(null);
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-
+      window.location.reload();
     });
   }
 
@@ -101,7 +104,7 @@ export class AuthService {
   }
 
   getTokenFromStorage() {
-    this._token.next(localStorage.getItem('token'));
+    // this._token.next(localStorage.getItem('token'));
     return from(localStorage.getItem('token'));
   }
 
@@ -111,6 +114,7 @@ export class AuthService {
 
   getUserFromStorage() {
     this._user.next(localStorage.getItem('user'));
-    return from(localStorage.getItem('user'));
+    return of(localStorage.getItem('user'));
+    // return localStorage.getItem('user');
   }
 }

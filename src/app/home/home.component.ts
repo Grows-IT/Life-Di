@@ -29,16 +29,25 @@ export class HomeComponent implements OnInit {
   bannerPic: any;
 
   ngOnInit(): void {
-    // this.homeService.getJournal().subscribe((jour) => console.log(jour));
     this.authService.getUser().subscribe(user => {
       console.log(user);
-
-      this.user = user;
+      this.user = JSON.parse(user);
     });
+
     this.homeService.getJournal().subscribe((jour) => {
       this.allJournal = jour;
       console.log(jour);
     });
+
     this.homeService.getBanner().subscribe((banner) => this.bannerPic = banner);
+  }
+
+  signout() {
+    this.authService.signOut();
+    // window.location.reload();
+    // this.authService.getUser().subscribe(user => {
+    //   console.log(user);
+    //   this.user = JSON.parse(user);
+    // });
   }
 }
