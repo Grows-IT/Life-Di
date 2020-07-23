@@ -1,4 +1,4 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
   <div class="container-fluid">
     <div class="row">
       <div class="col-3">
@@ -20,7 +20,7 @@
                 </a>
                 <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
                   <a ngbDropdownItem disabled>สวัสดีคุณ {{user.firstName}}</a>
-                  <a ngbDropdownItem routerLink="/profile" (click)="$event.preventDefault()">ข้อมูลส่วนตัว</a>
+                  <a ngbDropdownItem routerLink="/profile">ข้อมูลส่วนตัว</a>
                   <a ngbDropdownItem href="#" (click)="$event.preventDefault()">ตั้งค่า</a>
                   <a ngbDropdownItem (click)="signout()">ลงชื่อออก</a>
                 </div>
@@ -29,85 +29,97 @@
           </div>
           <div *ngIf="!user">
             <a href="/login">Login</a>
-          </div>
-        </div>
-      </div>
-    </div>
+          </div> -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <img src="assets\logo life-di.png" height="80px" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="ค้นหา" aria-label="Search" />
+        <button class="btn my-2 my-sm-0 searchbutton" type="submit">
+          ค้นหา
+        </button>
+      </form>
+      <li class="nav-item">
+        <a class="nav-link" href="#">คอร์สเรียน</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">กระทู้</a>
+      </li>
+    </ul>
   </div>
-</mat-toolbar>
-<div class="container">
-  <h2>ข่าวสาร</h2>
+  <div ngbDropdown class="d-inline-block">
+    <ul class="navbar-nav ml-auto" *ngIf="user">
+      <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+        <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+          <img src="assets/icon/person.png" height="30px" />
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+          <a ngbDropdownItem disabled>สวัสดีคุณ {{ user.firstName }}</a>
+          <a ngbDropdownItem routerLink="/profile">ข้อมูลส่วนตัว</a>
+          <a ngbDropdownItem href="#" (click)="$event.preventDefault()">ตั้งค่า</a>
+          <a ngbDropdownItem (click)="signout()">ลงชื่อออก</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!user">
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<h2>ข่าวสาร</h2>
+
+<div style="border-color: transparent;">
+  <ngb-carousel *ngIf="bannerPic">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper" style="width: auto; height: 50vh; max-height: 400px;">
+        <img [src]="bannerPic[0]" alt="Random first slide" style="width: 100%; min-height: 400px; height: auto;"
+          align="center" />
+      </div>
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper" style="
+          width: auto;
+          height: 50vh;
+          max-height: 400px;
+          text-align: center;
+        ">
+        <img [src]="bannerPic[1]" alt="Random second slide" style="width: 100%; min-height: 400px; height: auto;"
+          align="center" />
+      </div>
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
 </div>
 
-<!-- <div id="carouselControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="width: 100vw;">
-      <img src="assets\natural1.jpg" alt="First slide" />
-    </div>
-    <div class="carousel-item">
-      <img src="assets\natural2.jpg" alt="Second slide" />
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-  <a
-    class="carousel-control-prev"
-    href="#carouselControls"
-    role="button"
-    data-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a
-    class="carousel-control-next"
-    href="#carouselControls"
-    role="button"
-    data-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> -->
-
-<div class="container">
-<ngb-carousel *ngIf="bannerPic">
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="bannerPic[0]" alt="Random first slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <img [src]="bannerPic[1]" alt="Random second slide">
-    </div>
-    <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </ng-template>
-</ngb-carousel></div>
-
 <h2>บทความ</h2>
-<div class="container" *ngIf="allJournal">
+<div *ngIf="allJournal">
   <div class="row">
     <div class="col" *ngFor="let journal of allJournal">
-        <div class="card">
-          <img class="card-img-top" src="{{journal.journalPic}}" />
-          <div class="card-body">
-            <h5 class="card-title">{{journal.journalTitle}}</h5>
-            <p class="card-text">
-              {{journal.journalInfo}}
-            </p>
-          </div>
+      <div class="card">
+        <img class="card-img-top" src="{{ journal.journalPic }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ journal.journalTitle }}</h5>
+          <p class="card-text">
+            {{ journal.journalInfo }}
+          </p>
         </div>
+      </div>
     </div>
   </div>
 </div>
