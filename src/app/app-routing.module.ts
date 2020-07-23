@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { CoursesComponent } from './courses/courses.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
   }, {
     path: 'profile',
     component: ProfileComponent,
+    canLoad: [AuthGuard]
+  }
+  , {
+    path: 'courses',
+    component: CoursesComponent,
     canLoad: [AuthGuard]
   }
 ];

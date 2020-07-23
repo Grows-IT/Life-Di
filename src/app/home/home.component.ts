@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService, public homeService: HomeService) { }
 
   allJournal: any;
+  allCourses: any;
   bannerPic: any;
 
   ngOnInit(): void {
@@ -39,6 +40,11 @@ export class HomeComponent implements OnInit {
     this.homeService.getJournal().subscribe((jour) => {
       this.allJournal = jour;
       console.log(jour);
+    });
+
+    this.homeService.getCourses().subscribe((course) => {
+      this.allCourses = course;
+      console.log(course);
     });
 
     this.homeService.getBanner().subscribe((banner) => this.bannerPic = banner);
