@@ -43,6 +43,6 @@ body {
   margin: 0;
   // font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-#sizeCard{
-  width: 250px;
-}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

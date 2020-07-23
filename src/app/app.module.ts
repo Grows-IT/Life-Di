@@ -10,7 +10,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { HomeComponent } from './home/home.component';
-import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 
@@ -45,7 +45,8 @@ const MaterialComponent = [
     HttpClientModule,
     MaterialComponent,
     NgbPaginationModule,
-    NgbAlertModule
+    NgbAlertModule,
+    NgbModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
