@@ -21,22 +21,13 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  user: SocialUser;
-
-  constructor(private authService: AuthService, public homeService: HomeService) { }
+  constructor(public homeService: HomeService) { }
 
   allJournal: any;
   allCourses: any;
   bannerPic: any;
 
   ngOnInit(): void {
-    this.authService.getUser().subscribe(user => {
-      console.log(user);
-      if (user) {
-        this.user = JSON.parse(user);
-      }
-    });
-
     this.homeService.getJournal().subscribe((jour) => {
       this.allJournal = jour;
       console.log(jour);
@@ -48,14 +39,5 @@ export class HomeComponent implements OnInit {
     });
 
     this.homeService.getBanner().subscribe((banner) => this.bannerPic = banner);
-  }
-
-  signout() {
-    this.authService.signOut();
-    // window.location.reload();
-    // this.authService.getUser().subscribe(user => {
-    //   console.log(user);
-    //   this.user = JSON.parse(user);
-    // });
   }
 }

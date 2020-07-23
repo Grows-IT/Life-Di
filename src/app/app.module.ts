@@ -14,6 +14,8 @@ import { CarouselModule, WavesModule, CardsModule } from 'angular-bootstrap-md';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { LifediNavbarComponent } from './lifediComponent/lifedi-navbar/lifedi-navbar.component';
+import { CoursesComponent } from './courses/courses.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +23,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { CoursesComponent } from './courses/courses.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -48,6 +49,7 @@ const NGBComponent = [
     HomeComponent,
     SignupComponent,
     ProfileComponent,
+    LifediNavbarComponent,
     CoursesComponent
   ],
   imports: [
