@@ -8,7 +8,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
 import { HomeComponent } from './home/home.component';
-import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
@@ -31,7 +31,8 @@ const MaterialComponent = [
 const NGBComponent = [
   NgbDropdownModule,
   NgbPaginationModule,
-  NgbAlertModule
+  NgbAlertModule,
+  NgbModule
 ];
 
 @NgModule({
