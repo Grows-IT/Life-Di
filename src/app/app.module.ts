@@ -5,14 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+
 import { HomeComponent } from './home/home.component';
-import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,13 +28,19 @@ const MaterialComponent = [
   MatIconModule,
   MatCardModule
 ];
+const NGBComponent = [
+  NgbDropdownModule,
+  NgbPaginationModule,
+  NgbAlertModule
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +49,7 @@ const MaterialComponent = [
     SocialLoginModule,
     HttpClientModule,
     MaterialComponent,
-    NgbPaginationModule,
-    NgbAlertModule
+    NGBComponent
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

@@ -4,6 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 
 const routes: Routes = [
@@ -11,15 +12,19 @@ const routes: Routes = [
     path: '',
     // loadChildren: './home/home.module#HomeModule',
     component: HomeComponent,
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   }, {
-    path: 'signin',
+    path: 'login',
     component: LoginComponent,
     // loadChildren: './auth/auth.module#AuthModule',
-    // canLoad: [AuthGuard]
+    canLoad: [AuthGuard]
   }, {
     path: 'signup',
     component: SignupComponent
+  }, {
+    path: 'profile',
+    component: ProfileComponent,
+    canLoad: [AuthGuard]
   }
 ];
 

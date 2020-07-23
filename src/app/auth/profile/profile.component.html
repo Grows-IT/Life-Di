@@ -1,0 +1,81 @@
+<!-- *ngIf="user" -->
+<div class="text-center">
+  <div class="container">
+    <h2 style="margin-bottom: 35px; color: #2C4975;">
+      <b>ข้อมูลส่วนตัว</b>
+    </h2>
+    <div class="row">
+      <img src="" alt="">
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <p>ประวัติส่วนตัว</p>
+        <div class="card">
+          <div class="card-body">
+            <div class="container row">
+              <div class="col-12">ชื่อผู้ใช้ : {{user.name}}</div>
+              <div class="col-12">อีเมล : {{user.email}}</div>
+              <div class="col-12">รหัสผ่าน : {{user.name}}</div>
+              <div class="col-12">วันเดือนปีเกิด : {{user.name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row">
+          <p>ช่องทางการติดต่อ</p>
+        </div>
+        <div class="row">
+          <div class="col-12 card">
+            <div class="card-body">
+              This is some text within a card body.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <p>เกี่ยวกับคุณ</p>
+        </div>
+        <div class="row">
+          <div class="col-12 card">
+            <div class="card-body">
+              This is some text within a card body.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-flat-button type=" button" id="editProfile">แก้ไข</button>
+
+
+
+    <!-- <form>
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-10 row justify-content-center">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <label for="email-login">อีเมล</label>
+          </div>
+          <div class="col-md-3 col-sm-7">
+            <input type="email" class="form-control" id="email-login">
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-10 row justify-content-center">
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <label for="email-login">รหัสผ่าน</label>
+          </div>
+          <div class="col-md-3 col-sm-7">
+            <input type="password" class="form-control" id="password-login">
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center" style="margin: 35px 0;">
+        <div class="col-md-5 col-sm-8 row">
+          <div class="col-12">
+            <button mat-flat-button type="submit" color="primary" id="button-login">ลงชื่อเข้าใช้</button>
+          </div>
+        </div>
+      </div>
+    </form> -->
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,6 +30,6 @@ const routes: Routes = [{
     // AuthRoutingModule,
     RouterModule.forChild(routes)
   ],
-  declarations: []
+  declarations: [ProfileComponent]
 })
 export class AuthModule { }

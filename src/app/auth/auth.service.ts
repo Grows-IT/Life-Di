@@ -3,18 +3,20 @@ import { BehaviorSubject, of, from } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SocialUser, SocialAuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { timeout, map, switchMap, first, withLatestFrom, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _user = new BehaviorSubject<SocialUser>(null);
+  private _user = new BehaviorSubject<string>(null);
   private _token = new BehaviorSubject<string>(null);
   SocialUser: SocialUser;
-
+  loggedIn: boolean;
   constructor(
     private http: HttpClient,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private router: Router
   ) { }
 
   get user() {
@@ -27,41 +29,55 @@ export class AuthService {
 
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.getUser().subscribe((user) => {
-      if (user) {
-        // console.log(user);
-        this._user.next(user);
-        this._token.next(user.idToken);
-        this.saveTokenToStorage(user.idToken);
-      }
-    });
+    this.authService.authState.pipe(
+      map((user) => {
+        if (user) {
+          // console.log(user);
+          this._user.next(JSON.stringify(user));
+          this._token.next(user.idToken);
+          this.saveTokenToStorage(user.authToken);
+          this.saveUserToStorage(JSON.stringify(user));
+        }
+      })
+    );
   }
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    this.getUser().subscribe((user) => {
-      if (user) {
-        console.log(user);
-        this._user.next(user);
-        this._token.next(user.idToken);
-        this.saveTokenToStorage(user.idToken);
-      }
-    });
+    this.authService.authState.pipe(
+      map((user) => {
+        if (user) {
+          console.log(user);
+          this._user.next(JSON.stringify(user));
+          this._token.next(user.authToken);
+          this.saveTokenToStorage(user.authToken);
+          this.saveUserToStorage(JSON.stringify(user));
+          this.router.navigate(['/']);
+        }
+      })
+    ).subscribe();
   }
 
   getUser() {
-    return this.authService.authState.pipe((user) => {
-      if (user) {
-        return user;
+    // return this.user.pipe(
+    return this.authService.authState.pipe(
+      (user) => {
+        // console.log(user);
+        if (user) {
+          return user;
+        }
+        return;
       }
-      return;
-    });
+    );
   }
 
   signOut(): void {
     this.authService.signOut().then(() => {
       this._user.next(null);
       this._token.next(null);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+
     });
   }
 
@@ -89,4 +105,12 @@ export class AuthService {
     return from(localStorage.getItem('token'));
   }
 
+  private saveUserToStorage(user: string) {
+    localStorage.setItem('user', user);
+  }
+
+  getUserFromStorage() {
+    this._user.next(localStorage.getItem('user'));
+    return from(localStorage.getItem('user'));
+  }
 }

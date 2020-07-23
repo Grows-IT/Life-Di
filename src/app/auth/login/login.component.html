@@ -7,32 +7,34 @@
       <div class="row justify-content-center">
         <div class="col-md-10 col-sm-10 row justify-content-center">
           <div class="col-lg-2 col-md-2 col-sm-2">
-            <label for="email-login">อีเมล</label>
+            <label for="emailLogin">อีเมล</label>
           </div>
           <div class="col-md-3 col-sm-7">
-            <input type="email" class="form-control" id="email-login">
+            <input type="email" class="form-control" id="emailLogin">
           </div>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-md-10 col-sm-10 row justify-content-center">
           <div class="col-lg-2 col-md-2 col-sm-2">
-            <label for="email-login">รหัสผ่าน</label>
+            <label for="passwordLogin">รหัสผ่าน</label>
           </div>
           <div class="col-md-3 col-sm-7">
-            <input type="password" class="form-control" id="password-login">
+            <input type="password" class="form-control" id="passwordLogin">
           </div>
         </div>
       </div>
       <div class="row justify-content-center" style="margin: 35px 0;">
         <div class="col-md-5 col-sm-8 row">
           <div class="col-12">
-            <button mat-flat-button type="submit" color="primary" id="button-login">ลงชื่อเข้าใช้</button>
+            <button mat-flat-button type="submit" color="primary" id="buttonLogin">ลงชื่อเข้าใช้</button>
           </div>
         </div>
       </div>
     </form>
     <hr width="80%">
+    <button class="btn btn-social-icon btn-google" (click)="signInWithGoogle()"><span class="fa fa-google"></span></button>
+    <button class="btn btn-social-icon btn-facebook" (click)="signInWithFB()"><span class="fa fa-facebook"></span></button>
     <div class="row justify-content-center" style="margin-top: 35px;">
       <div class="col-md-5 col-sm-8 row">
         <div class="col-12">
@@ -52,7 +54,7 @@
     <p style="color: #2C4975;">ไม่มีบัญชี? <a href="/signup"><label>สร้างบัญชี</label></a></p>
   </div>
 </div>
-<div *ngIf="user" class="text-center">
+<!-- <div *ngIf="user" class="text-center">
   <img *ngIf="user.photoUrl" class="img-responsive photo" src="{{ user.photoUrl }}">
   <div>
     <h4>{{ user.name }}</h4>
@@ -61,4 +63,4 @@
   <div>
     <button class="btn btn-danger" (click)="signOut()">Sign out</button>
   </div>
-</div>
+</div> -->

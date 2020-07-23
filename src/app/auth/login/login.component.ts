@@ -9,19 +9,19 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   user;
+  loggedIn: boolean;
 
-  constructor(private authSerivce: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authSerivce.getUser().subscribe((user) => {
+    this.authService.getUser().subscribe((user) => {
       this.user = user;
-      console.log(user);
-
+      this.loggedIn = (user != null);
     });
   }
 
   signInWithGoogle() {
-    return this.authSerivce.signInWithGoogle();
+    return this.authService.signInWithGoogle();
   }
 
   signInWithFB() {
@@ -29,13 +29,13 @@ export class LoginComponent implements OnInit {
     const date = new Date().getTime();
     console.log(userAgent + ' ' + date);
 
-    return this.authSerivce.signInWithFB();
+    return this.authService.signInWithFB();
   }
 
   signOut() {
     const date = new Date().getTime();
     console.log(date);
 
-    return this.authSerivce.signOut();
+    return this.authService.signOut();
   }
 }
