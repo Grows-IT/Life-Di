@@ -33,15 +33,83 @@
 </div>
 
 <h2>บทความ</h2>
-<div *ngIf="allJournal">
+
+<div  id="multi-item-example" class="carousel slide carousel-multi-item controls-top" data-ride="carousel" *ngIf="allJournal">
+
+  <!--Controls-->
+  <!-- <div class="controls-top"> -->
+    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+  <!-- </div> -->
+  <!--/.Controls-->
+
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+    <li data-target="#multi-item-example" data-slide-to="1"></li>
+    <li data-target="#multi-item-example" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox" >
+
+    <!--First slide-->
+    <div class="carousel-item active">
+
+      <div class="row">
+        <div class="col-md-4" *ngFor="let journal of allJournal">
+          <div class="card mb-2">
+            <img class="card-img-top" src="{{journal.journalPic}}" alt="Card image cap" style="height: 350px;">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary">Button</a>
+            </div>
+          </div>
+        </div>
+  </div>
+    </div>
+    <!--/.First slide-->
+
+    <!--Second slide-->
+    <div class="carousel-item">
+
+      <div class="row">
+        <div class="col-md-4" *ngFor="let journal of allJournal">
+          <div class="card mb-2">
+            <img class="card-img-top" src="{{journal.journalPic}}" alt="Card image cap" style="height: 350px;">
+            <div class="card-body">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                card's content.</p>
+              <a class="btn btn-primary">Button</a>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+    <!--/.Second slide-->
+
+  </div>
+  <!--/.Slides-->
+
+</div>
+<!--/.Carousel Wrapper-->
+
+
+<h2>คอร์สเรียน</h2>
+<div *ngIf="allCourses">
   <div class="row">
-    <div class="col" *ngFor="let journal of allJournal">
+    <div class="col" *ngFor="let course of allCourses">
       <div class="card">
-        <img class="card-img-top" src="{{ journal.journalPic }}" />
+        <img class="card-img-top" src="{{ course.coursePic }}" style="height: 350px;"/>
         <div class="card-body">
-          <h5 class="card-title">{{ journal.journalTitle }}</h5>
+          <h5 class="card-title">{{ course.courseTitle }}</h5>
           <p class="card-text">
-            {{ journal.journalInfo }}
+            {{ course.courseInfo }}
           </p>
         </div>
       </div>

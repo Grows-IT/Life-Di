@@ -9,10 +9,13 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 
 import { HomeComponent } from './home/home.component';
 import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// For MDB Angular Free
+import { CarouselModule, WavesModule, CardsModule } from 'angular-bootstrap-md';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { LifediNavbarComponent } from './lifediComponent/lifedi-navbar/lifedi-navbar.component';
+import { CoursesComponent } from './courses/courses.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +23,6 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { LifediNavbarModule } from './lifediComponent/lifedi-navbar/lifedi-navbar.module';
 
 const MaterialComponent = [
   MatInputModule,
@@ -28,7 +30,10 @@ const MaterialComponent = [
   MatGridListModule,
   MatToolbarModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  CarouselModule,
+  WavesModule,
+  CardsModule
 ];
 const NGBComponent = [
   NgbDropdownModule,
@@ -44,7 +49,8 @@ const NGBComponent = [
     HomeComponent,
     SignupComponent,
     ProfileComponent,
-    LifediNavbarComponent
+    LifediNavbarComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
