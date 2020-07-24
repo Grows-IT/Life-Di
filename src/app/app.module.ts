@@ -10,7 +10,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 import { HomeComponent } from './home/home.component';
 import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // For MDB Angular Free
-import { CarouselModule, WavesModule, CardsModule } from 'angular-bootstrap-md';
+import { CarouselModule, WavesModule, CardsModule, ButtonsModule } from 'angular-bootstrap-md';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
@@ -33,7 +33,8 @@ const MaterialComponent = [
   MatCardModule,
   CarouselModule,
   WavesModule,
-  CardsModule
+  CardsModule,
+  ButtonsModule
 ];
 const NGBComponent = [
   NgbDropdownModule,
