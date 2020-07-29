@@ -14,7 +14,7 @@ export class LifediNavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getUser().subscribe(user => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         this.user = JSON.parse(user);
       }

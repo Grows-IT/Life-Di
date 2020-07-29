@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MycourseComponent } from './courses/mycourse/mycourse.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -51,7 +52,8 @@ const NGBComponent = [
     SignupComponent,
     ProfileComponent,
     LifediNavbarComponent,
-    CoursesComponent
+    CoursesComponent,
+    MycourseComponent
   ],
   imports: [
     BrowserModule,

@@ -75,13 +75,23 @@ export class AuthService {
   }
 
   signOut(): void {
-    this.authService.signOut().then(() => {
-      this._user.next(null);
-      this._token.next(null);
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      window.location.reload();
-    });
+    this.authService.signOut()
+      .then(() => {
+        this._user.next(null);
+        this._token.next(null);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = '';
+        // window.location.reload();
+      })
+      .catch(() => {
+        this._user.next(null);
+        this._token.next(null);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = '';
+        // window.location.reload();
+      });
   }
 
   isLoggedIn() {
