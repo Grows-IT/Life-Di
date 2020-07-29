@@ -1,13 +1,12 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
 <h2 style="text-align: center; padding-top: 8%;">คอร์สเรียนของฉัน</h2>
-
-<div class="row">
+<div class="row" style="padding: 0 7%;">
   <div class="col text-right">
     <div ngbDropdown class="d-inline-block">
       <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>คัดกรอง</button>
       <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem>คอร์สทัั้งหมด</button>
+        <button ngbDropdownItem routerLink="/courses">คอร์สทัั้งหมด</button>
         <button ngbDropdownItem routerLink="/mycourse">คอร์สของฉัน</button>
         <button ngbDropdownItem>คอร์สใหม่</button>
         <button ngbDropdownItem>คอร์สที่ยังเปิดใช้งานอยู่</button>
@@ -15,18 +14,18 @@
     </div>
   </div>
 
-<div *ngIf="myCourse">
-  <div class="row">
-    <div class="col-4" *ngFor="let course of myCourse">
-       <div class="card">
-        <img class="card-img-top" src="{{ course.coursePic }}" style="height: 350px;"/>
-        <div class="card-body">
-          <h5 class="card-title">{{ course.courseTitle }}</h5>
-          <p class="card-text">
-            {{ course.courseInfo }}
-          </p>
+  <div *ngIf="myCourse">
+    <div class="row">
+      <div class="col-4" *ngFor="let course of myCourse">
+        <div class="card">
+          <img class="card-img-top" src="{{ course.coursePic }}" style="height: 350px;" />
+          <div class="card-body">
+            <h5 class="card-title">{{ course.courseTitle }}</h5>
+            <p class="card-text">
+              {{ course.courseInfo }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
