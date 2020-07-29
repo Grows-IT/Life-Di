@@ -44,5 +44,14 @@ body {
   // font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.progress {
+  background-color: #fff !important;
+  border-radius: 3rem;
+
+  > .bg-info {
+    background-color: #2c4975 !important;
+  }
+}
+
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

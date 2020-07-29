@@ -4,9 +4,9 @@
 <div class="row" style="padding: 0 8%;">
   <div class="col text-right">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>คัดกรอง</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem>คอร์สทัั้งหมด</button>
+      <button class="btn" id="buttonSort" ngbDropdownToggle>คัดกรอง</button>
+      <div id="buttonOptions" ngbDropdownMenu aria-labelledby="buttonSort">
+        <button ngbDropdownItem>คอร์สทั้งหมด</button>
         <button ngbDropdownItem routerLink="/mycourse" *ngIf="user">คอร์สของฉัน</button>
         <button ngbDropdownItem>คอร์สใหม่</button>
         <button ngbDropdownItem>คอร์สที่ยังเปิดใช้งานอยู่</button>
@@ -15,13 +15,13 @@
   </div>
 
   <div *ngIf="allCourses">
-    <div class="row">
-      <div class="col" *ngFor="let course of allCourses">
+    <div id="cardCourse" class="row">
+      <div class="col-4 h-100" *ngFor="let course of allCourses">
         <div class="card">
+          <h5 class="card-title text-center">{{ course.courseTitle }}</h5>
           <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw;" />
           <div class="card-body">
-            <h5 class="card-title">{{ course.courseTitle }}</h5>
-            <p class="card-text">
+            <p class="card-text text-center">
               {{ course.courseInfo }}
             </p>
           </div>

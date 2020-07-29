@@ -4,9 +4,9 @@
 <div class="row" style="padding: 0 7%;">
   <div class="col text-right">
     <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>คัดกรอง</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem routerLink="/courses">คอร์สทัั้งหมด</button>
+      <button class="btn" id="buttonSort" ngbDropdownToggle>คัดกรอง</button>
+      <div id="buttonOptions" ngbDropdownMenu aria-labelledby="buttonSort">
+        <button ngbDropdownItem routerLink="/courses">คอร์สทั้งหมด</button>
         <button ngbDropdownItem routerLink="/mycourse">คอร์สของฉัน</button>
         <button ngbDropdownItem>คอร์สใหม่</button>
         <button ngbDropdownItem>คอร์สที่ยังเปิดใช้งานอยู่</button>
@@ -16,13 +16,22 @@
 
   <div *ngIf="myCourse">
     <div class="row">
-      <div class="col-4" *ngFor="let course of myCourse">
-        <div class="card">
-          <img class="card-img-top" src="{{ course.coursePic }}" style="height: 350px;" />
+      <div id="cardCourse" class="col-4" *ngFor="let course of myCourse">
+        <div class="card h-100">
+          <h5 class="card-title text-center">{{ course.courseTitle }}</h5>
+          <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw;" />
           <div class="card-body">
-            <h5 class="card-title">{{ course.courseTitle }}</h5>
-            <p class="card-text">
-              {{ course.courseInfo }}
+            <p class="card-text text-center">
+              {{ course.courseInfo }} <br>
+            </p>
+          </div>
+          <div class="card-footer">
+            <p *ngIf="course.courseProgress !== 100">
+              <ngb-progressbar type="info" textType="white" [value]="course.courseProgress" [showValue]="true">
+              </ngb-progressbar>
+            </p>
+            <p *ngIf="course.courseProgress === 100">
+              <ngb-progressbar type="success" [value]="100">Completed!</ngb-progressbar>
             </p>
           </div>
         </div>

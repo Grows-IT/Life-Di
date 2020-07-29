@@ -1,0 +1,67 @@
+h2 {
+  color: #2c4975;
+}
+
+#cardCourse {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#buttonSort {
+  color: white;
+  background-color: #dd598c;
+  padding: 10px 25px;
+  border-radius: 3em;
+  border: 0;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(221, 89, 140, 0.25);
+}
+
+#buttonOptions {
+  color: #2c4975;
+  :hover {
+    background-color: #feeef4;
+    outline-color: #dd598c;
+    color: #2c4975;
+  }
+  // :focus {
+  //   outline-color: #dd598c;
+  //   color: #2c4975;
+  // }
+  :active {
+    background-color: #feeef4;
+    outline-color: #dd598c;
+    color: #2c4975;
+  }
+}
+
+.card {
+  border-radius: 30px;
+  border: 0;
+  box-shadow: none !important;
+  background-color: #feeef4;
+
+  .card-img-top {
+    padding: 0 35px;
+  }
+
+  .card-title {
+    color: #2c4975;
+    padding-top: 20px;
+    padding-bottom: 15px;
+  }
+
+  .card-body > .card-text {
+    color: #dd598c;
+  }
+
+  .card-footer {
+    border-radius: 0;
+    padding: 0.75rem 1.25rem;
+    background-color: unset;
+    border-top: 0 !important;
+  }
+}
