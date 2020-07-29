@@ -6,3 +6,7 @@
   background-color: palevioletred;
   color: white;
 }
+
+button:focus {
+  outline: none !important;
+}
