@@ -32,14 +32,15 @@ export class AuthService {
     this.authService.authState.pipe(
       map((user) => {
         if (user) {
-          // console.log(user);
+          console.log(user);
           this._user.next(JSON.stringify(user));
           this._token.next(user.idToken);
           this.saveTokenToStorage(user.authToken);
           this.saveUserToStorage(JSON.stringify(user));
+          this.router.navigate(['/']);
         }
       })
-    );
+    ).subscribe();
   }
 
   signInWithFB(): void {

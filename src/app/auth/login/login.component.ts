@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGoogle() {
+    const userAgent = window.navigator.userAgent;
+    const date = new Date().getTime();
+    console.log(userAgent + ' ' + date);
+
     return this.authService.signInWithGoogle();
   }
 
