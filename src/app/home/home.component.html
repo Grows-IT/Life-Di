@@ -1,8 +1,6 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
-<h2 style="padding-left: 7%; padding-top: 6%;">ข่าวสาร</h2>
-
-<div style="border-color: transparent;">
+<div style="border-color: transparent; padding-top: 86px;">
   <ngb-carousel *ngIf="bannerPic">
     <ng-template ngbSlide>
       <div
@@ -46,8 +44,6 @@
   </ngb-carousel>
 </div>
 
-<h2>บทความ</h2>
-
 <div
   id="multi-item-journal"
   class="carousel slide carousel-multi-item controls-top"
@@ -56,7 +52,12 @@
 >
   <div class="row">
     <div class="col-1">
-      <button mat-button href="#multi-item-journal" data-slide="prev" style="height: 100%; width: 100%; ">
+      <button
+        mat-button
+        href="#multi-item-journal"
+        data-slide="prev"
+        style="height: 100%; width: 100%;"
+      >
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
@@ -70,6 +71,7 @@
 
     <!--Slides-->
     <div class="col-10">
+      <h2 style="padding: 3% 0;">บทความ</h2>
       <div class="carousel-inner" role="listbox">
         <!--First slide-->
         <div class="carousel-item active">
@@ -125,7 +127,12 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button mat-button href="#multi-item-journal" data-slide="next" style="height: 100%; width: 100%;">
+      <button
+        mat-button
+        href="#multi-item-journal"
+        data-slide="next"
+        style="height: 100%; width: 100%;"
+      >
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
@@ -133,7 +140,6 @@
 </div>
 
 <!-- ---courses--- -->
-<h2>คอร์สเรียน</h2>
 
 <div
   id="multi-item-courses"
@@ -144,7 +150,12 @@
   <div class="row">
     <!--Controls-->
     <div class="col-1">
-      <button mat-button href="#multi-item-courses" data-slide="prev" style="height: 100%; width: 100%;">
+      <button
+        mat-button
+        href="#multi-item-courses"
+        data-slide="prev"
+        style="height: 100%; width: 100%;"
+      >
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
@@ -161,6 +172,7 @@
 
     <!--Slides-->
     <div class="col-10">
+      <h2 style="padding: 3% 0;">คอร์สเรียน</h2>
       <div class="carousel-inner" role="listbox">
         <!--First slide-->
         <div class="carousel-item active">
@@ -216,7 +228,12 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button mat-button href="#multi-item-courses" data-slide="next" style="height: 100%; width: 100%;">
+      <button
+        mat-button
+        href="#multi-item-courses"
+        data-slide="next"
+        style="height: 100%; width: 100%;"
+      >
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
