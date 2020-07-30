@@ -1,51 +1,48 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
 <!-- *ngIf="user" -->
-<div class="text-center" style="margin-top: 8%;">
-  <div class="container">
-    <h2 style="margin-bottom: 35px; color: #2C4975;">
-      <b>ข้อมูลส่วนตัว</b>
-    </h2>
-    <div class="row">
-      <img src="" alt="">
-    </div>
-    <div class="row">
-      <div class="col-6">
-        <p>ประวัติส่วนตัว</p>
-        <div class="card">
-          <div class="card-body">
-            <div class="container row">
-              <div class="col-12">ชื่อผู้ใช้ : {{user.name}}</div>
-              <div class="col-12">อีเมล : {{user.email}}</div>
-              <div class="col-12">รหัสผ่าน : {{user.name}}</div>
-              <div class="col-12">วันเดือนปีเกิด : {{user.name}}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="row">
-          <p>ช่องทางการติดต่อ</p>
-        </div>
-        <div class="row">
-          <div class="col-12 card">
-            <div class="card-body">
-              This is some text within a card body.
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <p>เกี่ยวกับคุณ</p>
-        </div>
-        <div class="row">
-          <div class="col-12 card">
-            <div class="card-body">
-              This is some text within a card body.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button mat-flat-button type=" button" id="editProfile">แก้ไข</button>
+<div class="container text-center" style="margin-top: 76px;">
+  <h2 style="margin-bottom: 35px; color: #2C4975; padding-top: 50px;">
+    <b>ข้อมูลส่วนตัว</b>
+  </h2>
+  <div class="row">
+    <img src="" alt="">
   </div>
+  <div class="row">
+    <div class="col-6">
+      <h4>ประวัติส่วนตัว</h4>
+      <div class="card">
+        <div class="card-body">
+          <div class="container row">
+            <div class="col-12">ชื่อผู้ใช้ : {{user.name}}</div>
+            <div class="col-12">อีเมล : {{user.email}}</div>
+            <div class="col-12">รหัสผ่าน : {{user.name}}</div>
+            <div class="col-12">วันเดือนปีเกิด : {{user.name}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="row">
+        <h4>ช่องทางการติดต่อ</h4>
+        <div class="col-12 card">
+          <div class="card-body">
+            This is some text within a card body.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h4>เกี่ยวกับคุณ</h4>
+        <div class="col-12 card">
+          <div class="card-body">
+            This is some text within a card body.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center" style="margin-top: 10px;">
+
+  <button mat-flat-button type=" button" id="editProfile">แก้ไข</button>
 </div>

@@ -1,3 +1,35 @@
-img:focus{
-  outline: none !important;
+.navbar {
+  box-shadow: none !important;
+}
+.navbar-brand img {
+  height: 50px;
+  max-height: 50px;
+  // margin: 5px;
+  :focus {
+    outline: none !important;
+  }
+}
+// .navbar {
+//   padding: 0px;
+// }
+
+@media screen and (min-width: 992px) {
+  .iconDesktop {
+    display: block !important;
+  }
+  .iconMobile {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .iconDesktop {
+    display: none !important;
+  }
+  .iconMobile {
+    display: block !important;
+  }
+  // .navbar {
+  //   padding: 0;
+  // }
 }

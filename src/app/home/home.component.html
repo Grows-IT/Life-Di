@@ -1,18 +1,11 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
-<div style="border-color: transparent; padding-top: 86px;">
+<div style="margin-top: 76px;">
   <ngb-carousel *ngIf="bannerPic">
     <ng-template ngbSlide>
-      <div
-        class="picsum-img-wrapper"
-        style="width: auto; height: 50vh; max-height: 400px;"
-      >
-        <img
-          [src]="bannerPic[0]"
-          alt="Random first slide"
-          style="width: 100%; min-height: 400px; height: auto;"
-          align="center"
-        />
+      <div class="picsum-img-wrapper" style="width: auto; height: 50vh; max-height: 400px;">
+        <img [src]="bannerPic[0]" alt="Random first slide" style="width: 100%; min-height: 400px; height: auto;"
+          align="center" />
       </div>
       <div class="carousel-caption">
         <h3>First slide label</h3>
@@ -20,21 +13,9 @@
       </div>
     </ng-template>
     <ng-template ngbSlide>
-      <div
-        class="picsum-img-wrapper"
-        style="
-          width: auto;
-          height: 50vh;
-          max-height: 400px;
-          text-align: center;
-        "
-      >
-        <img
-          [src]="bannerPic[1]"
-          alt="Random second slide"
-          style="width: 100%; min-height: 400px; height: auto;"
-          align="center"
-        />
+      <div class="picsum-img-wrapper" style="width: auto; height: 50vh; max-height: 400px; text-align: center;">
+        <img [src]="bannerPic[1]" alt="Random second slide" style="width: 100%; min-height: 400px; height: auto;"
+          align="center" />
       </div>
       <div class="carousel-caption">
         <h3>Second slide label</h3>
@@ -44,30 +25,14 @@
   </ngb-carousel>
 </div>
 
-<div
-  id="multi-item-journal"
-  class="carousel slide carousel-multi-item controls-top"
-  data-ride="carousel"
-  *ngIf="allJournal"
->
+<div id="multi-item-journal" class="carousel slide carousel-multi-item controls-top" data-ride="carousel"
+  *ngIf="allJournal">
   <div class="row">
     <div class="col-1">
-      <button
-        mat-button
-        href="#multi-item-journal"
-        data-slide="prev"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-journal" data-slide="prev" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
-    <!--Indicators-->
-    <!-- <ol class="carousel-indicators">f
-    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-    <li data-target="#multi-item-example" data-slide-to="1"></li>
-    <li data-target="#multi-item-example" data-slide-to="2"></li>
-  </ol> -->
-    <!--/.Indicators-->
 
     <!--Slides-->
     <div class="col-10">
@@ -78,19 +43,14 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let journal of allJournal">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="{{ journal.journalPic }}"
-                  alt="Card image cap"
-                  style="height: 15vw;"
-                />
+                <img class="card-img-top" src="{{ journal.journalPic }}" alt="Card image cap" style="height: 15vw;" />
                 <div class="card-body">
                   <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <a class="btn btn-primary">Button</a>
+                  <a class="btn btn-primary">อ่านสิจ๊ะ รออัลไร</a>
                 </div>
               </div>
             </div>
@@ -103,19 +63,14 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let journal of allJournal">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="{{ journal.journalPic }}"
-                  alt="Card image cap"
-                  style="height: 15vw;"
-                />
+                <img class="card-img-top" src="{{ journal.journalPic }}" alt="Card image cap" style="height: 15vw;" />
                 <div class="card-body">
                   <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <a class="btn btn-primary">Button</a>
+                  <a class="btn btn-primary">อ่านสิจ๊ะ รออัลไร</a>
                 </div>
               </div>
             </div>
@@ -127,12 +82,7 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button
-        mat-button
-        href="#multi-item-journal"
-        data-slide="next"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-journal" data-slide="next" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
@@ -141,34 +91,16 @@
 
 <!-- ---courses--- -->
 
-<div
-  id="multi-item-courses"
-  class="carousel slide carousel-multi-item controls-top"
-  data-ride="carousel"
-  *ngIf="allCourses"
->
+<div id="multi-item-courses" class="carousel slide carousel-multi-item controls-top" data-ride="carousel"
+  *ngIf="allCourses">
   <div class="row">
     <!--Controls-->
     <div class="col-1">
-      <button
-        mat-button
-        href="#multi-item-courses"
-        data-slide="prev"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-courses" data-slide="prev" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
-    <!-- </div> -->
     <!--/.Controls-->
-
-    <!--Indicators-->
-    <!-- <ol class="carousel-indicators">
-    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-    <li data-target="#multi-item-example" data-slide-to="1"></li>
-    <li data-target="#multi-item-example" data-slide-to="2"></li>
-  </ol> -->
-    <!--/.Indicators-->
 
     <!--Slides-->
     <div class="col-10">
@@ -179,19 +111,14 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let course of allCourses">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="{{ course.coursePic }}"
-                  alt="Card image cap"
-                  style="height: 15vw;"
-                />
+                <img class="card-img-top" src="{{ course.coursePic }}" alt="Card image cap" style="height: 15vw;" />
                 <div class="card-body">
                   <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <a class="btn btn-primary">Button</a>
+                  <a class="btn btn-primary">อ่านสิจ๊ะ รออัลไร</a>
                 </div>
               </div>
             </div>
@@ -204,19 +131,14 @@
           <div class="row">
             <div class="col-md-4" *ngFor="let course of allCourses">
               <div class="card mb-2">
-                <img
-                  class="card-img-top"
-                  src="{{ course.coursePic }}"
-                  alt="Card image cap"
-                  style="height: 15vw;"
-                />
+                <img class="card-img-top" src="{{ course.coursePic }}" alt="Card image cap" style="height: 15vw;" />
                 <div class="card-body">
                   <h4 class="card-title">Card title</h4>
                   <p class="card-text">
                     Some quick example text to build on the card title and make
                     up the bulk of the card's content.
                   </p>
-                  <a class="btn btn-primary">Button</a>
+                  <a class="btn btn-primary">อ่านสิจ๊ะ รออัลไร</a>
                 </div>
               </div>
             </div>
@@ -228,12 +150,7 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button
-        mat-button
-        href="#multi-item-courses"
-        data-slide="next"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-courses" data-slide="next" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>

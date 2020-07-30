@@ -29,6 +29,12 @@
   min-width: 200px;
   border: 0;
 }
-label {
-  color: #dd598c;
+a {
+  :hover {
+    text-decoration: underline;
+  }
+  > label {
+    color: #dd598c;
+    cursor: pointer;
+  }
 }

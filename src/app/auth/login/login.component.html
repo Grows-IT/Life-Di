@@ -1,7 +1,7 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
-<div *ngIf="!user" class="text-center" style="margin-top: 8%;">
-  <div class="container-fulid">
+<div *ngIf="!user" style="margin-top: 76px;">
+  <div class="container-fulid text-center" style="padding-top: 50px;">
     <h2 style="margin-bottom: 35px; color: #2C4975;">
       <b>ลงชื่อเข้าใช้</b>
     </h2>
@@ -54,13 +54,3 @@
     <p style="color: #2C4975;">ไม่มีบัญชี? <a href="/signup"><label>สร้างบัญชี</label></a></p>
   </div>
 </div>
-<!-- <div *ngIf="user" class="text-center">
-  <img *ngIf="user.photoUrl" class="img-responsive photo" src="{{ user.photoUrl }}">
-  <div>
-    <h4>{{ user.name }}</h4>
-    <p>{{ user.email }}</p>
-  </div>
-  <div>
-    <button class="btn btn-danger" (click)="signOut()">Sign out</button>
-  </div>
-</div> -->

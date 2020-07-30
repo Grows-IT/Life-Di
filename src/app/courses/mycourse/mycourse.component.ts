@@ -25,7 +25,6 @@ export class MycourseComponent implements OnInit {
     this.coursesService.getMycourse(this.user).subscribe(myCourse => {
       this.myCourse = myCourse;
       console.log(this.myCourse);
-
     });
   }
 
