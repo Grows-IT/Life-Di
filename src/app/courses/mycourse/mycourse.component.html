@@ -18,24 +18,26 @@
     <div *ngIf="myCourse">
       <div class="row">
         <div id="cardCourse" class="col-4" *ngFor="let course of myCourse">
-          <div class="card h-100">
-            <h5 class="card-title text-center">{{ course.courseTitle }}</h5>
-            <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw; border-radius: 20%;" />
-            <div class="card-body">
-              <p class="card-text text-center">
-                {{ course.courseInfo }} <br>
-              </p>
+          <a [routerLink]="['/course', course.courseId]">
+            <div class="card h-100">
+              <h5 class="card-title text-center">{{ course.courseTitle }}</h5>
+              <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw; border-radius: 20%;" />
+              <div class="card-body">
+                <p class="card-text text-center">
+                  {{ course.courseInfo }} <br>
+                </p>
+              </div>
+              <div class="card-footer">
+                <p *ngIf="course.courseProgress !== 100">
+                  <ngb-progressbar type="info" textType="white" [value]="course.courseProgress" [showValue]="true">
+                  </ngb-progressbar>
+                </p>
+                <p *ngIf="course.courseProgress === 100">
+                  <ngb-progressbar type="success" [value]="100">Completed!</ngb-progressbar>
+                </p>
+              </div>
             </div>
-            <div class="card-footer">
-              <p *ngIf="course.courseProgress !== 100">
-                <ngb-progressbar type="info" textType="white" [value]="course.courseProgress" [showValue]="true">
-                </ngb-progressbar>
-              </p>
-              <p *ngIf="course.courseProgress === 100">
-                <ngb-progressbar type="success" [value]="100">Completed!</ngb-progressbar>
-              </p>
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

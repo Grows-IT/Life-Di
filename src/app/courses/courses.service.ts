@@ -21,4 +21,9 @@ export class CoursesService {
     // console.log(user);
     return this.http.get(environment.dbUrl + '/mycourse?id=' + user.id);
   }
+
+  getCourse(courseId) {
+    // console.log(courseId);
+    return this.http.get(environment.dbUrl + '/course?courseId=' + courseId);
+  }
 }

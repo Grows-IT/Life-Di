@@ -8,7 +8,7 @@ import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-logi
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
 import { HomeComponent } from './home/home.component';
-import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule, NgbModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 // For MDB Angular Free
 import { CarouselModule, WavesModule, CardsModule, ButtonsModule } from 'angular-bootstrap-md';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -24,6 +24,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
+import { TopicComponent } from './courses/topic/topic.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -38,9 +39,6 @@ const MaterialComponent = [
   ButtonsModule
 ];
 const NGBComponent = [
-  NgbDropdownModule,
-  NgbPaginationModule,
-  NgbAlertModule,
   NgbModule
 ];
 
@@ -53,7 +51,8 @@ const NGBComponent = [
     ProfileComponent,
     LifediNavbarComponent,
     CoursesComponent,
-    MycourseComponent
+    MycourseComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,

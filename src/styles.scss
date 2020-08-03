@@ -54,6 +54,25 @@ body {
   }
 }
 
+ngb-accordion {
+  .card-header {
+    padding: 0 !important;
+
+    .btn.focus,
+    .btn:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    > .btn {
+      padding: 0.2rem 1.25rem !important;
+    }
+  }
+  .card-body {
+    padding: 0.7rem 2.7rem !important;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1300px !important;

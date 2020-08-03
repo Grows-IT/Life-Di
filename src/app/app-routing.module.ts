@@ -7,6 +7,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { CoursesComponent } from './courses/courses.component';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
+import { TopicComponent } from './courses/topic/topic.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,9 @@ const routes: Routes = [
   }, {
     path: 'mycourse',
     component: MycourseComponent
+  }, {
+    path: 'course/:courseId',
+    component: TopicComponent
   }
 ];
 
