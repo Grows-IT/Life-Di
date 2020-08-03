@@ -54,6 +54,20 @@ body {
   }
 }
 
+.btn-link {
+  color: #DD598C !important;
+}
+
+ngb-tabset{
+  a{
+    color: gray !important;
+  }
+  .nav-link.active {
+    color: #DD598C !important;
+  }
+}
+
+
 ngb-accordion {
   .card-header {
     padding: 0 !important;
