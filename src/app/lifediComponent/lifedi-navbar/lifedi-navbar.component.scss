@@ -33,3 +33,19 @@
   //   padding: 0;
   // }
 }
+.navbar-nav,
+.ml-auto {
+flex: 1;
+display: flex;
+justify-content: flex-end;
+}
+
+li.nav-item{
+  padding: 0 20px;
+}
+
+#lifedi-navbar {
+  form {
+    padding-left: 40px;
+  }
+}
