@@ -25,6 +25,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
 import { TopicComponent } from './courses/topic/topic.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ActivitiesComponent } from './activities/activities.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { FormsModule } from '@angular/forms';
 
 const MaterialComponent = [
   MatInputModule,
@@ -36,7 +41,7 @@ const MaterialComponent = [
   CarouselModule,
   WavesModule,
   CardsModule,
-  ButtonsModule
+  ButtonsModule,
 ];
 const NGBComponent = [
   NgbModule
@@ -52,7 +57,8 @@ const NGBComponent = [
     LifediNavbarComponent,
     CoursesComponent,
     MycourseComponent,
-    TopicComponent
+    TopicComponent,
+    ActivitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +66,14 @@ const NGBComponent = [
     BrowserAnimationsModule,
     SocialLoginModule,
     HttpClientModule,
+    FormsModule,
     MaterialComponent,
-    NGBComponent
+    NGBComponent,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    FlatpickrModule.forRoot(),
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

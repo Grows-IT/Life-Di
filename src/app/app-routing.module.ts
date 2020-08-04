@@ -8,6 +8,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { CoursesComponent } from './courses/courses.component';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
 import { TopicComponent } from './courses/topic/topic.component';
+import { ActivitiesComponent } from './activities/activities.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,9 @@ const routes: Routes = [
   }, {
     path: 'course/:courseId',
     component: TopicComponent
+  }, {
+    path: 'activity',
+    component: ActivitiesComponent
   }
 ];
 
