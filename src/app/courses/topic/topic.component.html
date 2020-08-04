@@ -8,14 +8,17 @@
       </div>
       <div class="row">
         <h5>{{course.courseBy}}</h5>
-        <ng-template #t let-fill="fill">
-          <span class="star">
-            <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
-          </span>
-        </ng-template>
-        <ngb-rating [(rate)]="course.courseReview.courseRating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
-        <span> {{course.courseReview.courseRating}}/5 </span>
-        <span> ({{course.courseReview.courseReviewNumber}} รีวิว)</span>
+        <div class="rating">
+          <ng-template #t let-fill="fill">
+            <span class="star">
+              <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+            </span>
+          </ng-template>
+          <ngb-rating [(rate)]="course.courseReview.courseRating" [starTemplate]="t" [readonly]="true" [max]="5">
+          </ngb-rating>
+        </div>
+        <span> &nbsp;&nbsp;{{course.courseReview.courseRating}}/5 </span>
+        <span> &nbsp;&nbsp;({{course.courseReview.courseReviewNumber}} รีวิว)</span>
       </div>
     </div>
     <div class="col-lg-6 col-md-12">
@@ -91,9 +94,17 @@
         <ng-template ngbTabContent>
           <div class="container-fluid">
             <div class="row" style="padding: 15px 0;">
-              <ngb-rating [(rate)]="course.courseReview.courseRating" [readonly]="true" [max]="5"></ngb-rating>
-              <span> {{course.courseReview.courseRating}}/5 </span>
-              <span> ({{course.courseReview.courseReviewNumber}} รีวิว)</span>
+              <div>
+                <ng-template #t let-fill="fill">
+                  <span class="star">
+                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                  </span>
+                </ng-template>
+                <ngb-rating [(rate)]="course.courseReview.courseRating" [starTemplate]="t" [readonly]="true" [max]="5">
+                </ngb-rating>
+              </div>
+              <span> &nbsp;&nbsp;{{course.courseReview.courseRating}}/5 </span>
+              <span> &nbsp;&nbsp;({{course.courseReview.courseReviewNumber}} รีวิว)</span>
             </div>
             <div class="row" *ngFor="let review of course.courseReview.review">
               <div class="card mb-3">
@@ -154,7 +165,9 @@
         <ng-template ngbTabContent>
           <div class="container-fluid">
             <div class="row">
-              {{course.aboutCourse.courseDetail}}
+              <p style="padding-top: 20px;">
+                {{course.aboutCourse.courseDetail}}
+              </p>
               <hr class="w-100">
             </div>
             <h2 class="d-lg-none text-center">สอนโดย</h2>
@@ -182,10 +195,18 @@
       <ngb-tab title="รีวิว">
         <ng-template ngbTabContent>
           <div class="container-fluid">
-            <div class="row">
-              <ngb-rating [(rate)]="course.courseReview.courseRating" [readonly]="true" [max]="5"></ngb-rating>
-              <span> {{course.courseReview.courseRating}}/5 </span>
-              <span> ({{course.courseReview.courseReviewNumber}} รีวิว)</span>
+            <div class="row"  style="padding: 15px 0;">
+              <div>
+                <ng-template #t let-fill="fill">
+                  <span class="star">
+                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                  </span>
+                </ng-template>
+                <ngb-rating [(rate)]="course.courseReview.courseRating" [starTemplate]="t" [readonly]="true" [max]="5">
+                </ngb-rating>
+              </div>
+              <span> &nbsp;&nbsp;{{course.courseReview.courseRating}}/5 </span>
+              <span> &nbsp;&nbsp;({{course.courseReview.courseReviewNumber}} รีวิว)</span>
             </div>
             <div class="row" *ngFor="let review of course.courseReview.review">
               <div class="card mb-3">
