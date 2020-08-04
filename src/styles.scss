@@ -55,22 +55,25 @@ body {
 }
 
 .btn-link {
-  color: #DD598C !important;
+  color: #dd598c !important;
 }
 
-ngb-tabset{
-  a{
+ngb-tabset {
+  a {
     color: gray !important;
   }
   .nav-link.active {
-    color: #DD598C !important;
+    color: #dd598c !important;
   }
 }
 
-
 ngb-accordion {
+  .card {
+    box-shadow: unset;
+  }
   .card-header {
     padding: 0 !important;
+    background-color: lavenderblush;
 
     .btn.focus,
     .btn:focus {
