@@ -8,7 +8,12 @@
       </div>
       <div class="row">
         <h5>{{course.courseBy}}</h5>
-        <ngb-rating [(rate)]="course.courseReview.courseRating" [readonly]="true" [max]="5"></ngb-rating>
+        <ng-template #t let-fill="fill">
+          <span class="star">
+            <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+          </span>
+        </ng-template>
+        <ngb-rating [(rate)]="course.courseReview.courseRating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
         <span> {{course.courseReview.courseRating}}/5 </span>
         <span> ({{course.courseReview.courseReviewNumber}} รีวิว)</span>
       </div>
@@ -41,9 +46,7 @@
         <ng-template ngbTabContent>
           <div class="container-fluid">
             <div class="row">
-              <p style="padding-top: 20px;">
-                {{course.aboutCourse.courseDetail}}
-              </p>
+              {{course.aboutCourse.courseDetail}}
               <hr class="w-100">
             </div>
             <div class="row">
@@ -63,7 +66,7 @@
       <ngb-tab title="รีวิว">
         <ng-template ngbTabContent>
           <div class="container-fluid">
-            <div class="row" style="padding: 15px 0;">
+            <div class="row">
               <ngb-rating [(rate)]="course.courseReview.courseRating" [readonly]="true" [max]="5"></ngb-rating>
               <span> {{course.courseReview.courseRating}}/5 </span>
               <span> ({{course.courseReview.courseReviewNumber}} รีวิว)</span>
@@ -106,7 +109,29 @@
                     </div>
                   </div>
                 </div>
+                <!-- <hr class="w-100"> -->
               </li>
+
+
+              <!-- <li *ngFor="let comment of course.chatCourse.comment">
+                    <div class="chat-body">
+                      <div class="container">
+                        <div class="col">
+                          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="avatar" class="avatar rounded-circle">
+                        </div>
+                        <div class="col">
+                          <div class="header">
+                            <strong class="primary-font">{{comment.userName}}</strong>
+                            <small class="pull-right text-muted"><i class="far fa-clock"></i>{{comment.date}}</small>
+                          </div>
+                          <p class="mb-0">
+                            {{comment.comment}}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="w-100">
+                  </li> -->
               <li class="white">
                 <div class="form-group basic-textarea">
                   <textarea class="form-control pl-2 my-0" id="exampleFormControlTextarea2" rows="3"
