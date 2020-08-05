@@ -22,21 +22,9 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
-
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
+import { ActivitiesService } from './activities.service';
+import { AuthService } from '../auth/auth.service';
+import { SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-activities',
@@ -45,9 +33,7 @@ const colors: any = {
 })
 export class ActivitiesComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-
-  ngOnInit(): void {
-  }
+  user: SocialUser;
   // tslint:disable-next-line: member-ordering
   view: CalendarView = CalendarView.Month;
 
@@ -85,53 +71,36 @@ export class ActivitiesComponent implements OnInit {
   // tslint:disable-next-line: member-ordering
   refresh: Subject<any> = new Subject();
 
-  // tslint:disable-next-line: member-ordering
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  events: CalendarEvent[];
 
-  // tslint:disable-next-line: member-ordering
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen = true;
 
+  constructor(private modal: NgbModal, private activitiesService: ActivitiesService, private authService: AuthService) { }
 
-  constructor(private modal: NgbModal) { }
+  ngOnInit(): void {
+    this.authService.getUser().subscribe(user => {
+      if (user) {
+        this.user = JSON.parse(user);
+      }
+    });
+
+    this.activitiesService.getActivity(this.user).subscribe(e => {
+      if (e) {
+        const allEvent = [];
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < e.length; i++) {
+          console.log(e[i]);
+
+          const event = e[i];
+          event.start = new Date(event.start);
+          event.end = new Date(event.end);
+          // event.actions = this.actions;
+          allEvent.push(event);
+        }
+        this.events = allEvent;
+      }
+    });
+  }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -147,11 +116,7 @@ export class ActivitiesComponent implements OnInit {
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
+  eventTimesChanged({ event, newStart, newEnd, }: CalendarEventTimesChangedEvent): void {
     this.events = this.events.map((iEvent) => {
       if (iEvent === event) {
         return {
@@ -177,7 +142,10 @@ export class ActivitiesComponent implements OnInit {
         title: 'New event',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
-        color: colors.red,
+        color: {
+          primary: '#001400',
+          secondary: '#FDF1BA',
+        },
         draggable: true,
         resizable: {
           beforeStart: true,
