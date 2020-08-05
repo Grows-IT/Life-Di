@@ -6,3 +6,11 @@ pre {
   background-color: #f5f5f5;
   padding: 15px;
 }
+
+b{
+  font-size: 30px;
+}
+
+button:focus {
+  outline: none !important;
+}
