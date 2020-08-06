@@ -3,28 +3,25 @@
     <a class="navbar-brand" href="/">
       <img src="assets\logo life-di.png" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#lifedi-navbar"
-      aria-controls="lifedi-navbar"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#lifedi-navbar"
+      aria-controls="lifedi-navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="lifedi-navbar">
       <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="ค้นหาคอร์สเรียน"
-          aria-label="Search"
-        />
+        <div id="custom-search-input">
+          <input type="text" class="search-query form-control" placeholder="ค้นหาคอร์สเรียน" />
+          <span class="input-group-btn">
+            <button type="button">
+              <span class="material-icons">search</span>
+            </button>
+          </span>
+        </div>
+
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="ค้นหาคอร์สเรียน" aria-label="Search" />
         <button class="btn my-2 my-sm-0 searchbutton" type="submit">
           ค้นหา
-        </button>
+        </button> -->
       </form>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item iconMobile" *ngIf="user">
@@ -44,14 +41,12 @@
           <a class="nav-link" href="#">กระทู้</a>
         </li>
         <li class="nav-item">
-          <a href="/#">
+          <a class="nav-link" href="/#">
             <img src="assets/icon/shoppingcart.png" height="30px" />
           </a>
         </li>
         <li class="nav-item iconMobile" *ngIf="user">
-          <a class="nav-link" href="#" (click)="$event.preventDefault()"
-            >ตั้งค่า</a
-          >
+          <a class="nav-link" href="#" (click)="$event.preventDefault()">ตั้งค่า</a>
           <a class="nav-link" (click)="signout()">ลงชื่อออก</a>
         </li>
         <li class="nav-item iconMobile" *ngIf="!user">
@@ -61,31 +56,14 @@
     </div>
     <div ngbDropdown class="d-inline-block iconDesktop">
       <ul class="navbar-nav ml-auto" *ngIf="user">
-        <li
-          class="nav-item"
-          ngbDropdown
-          display="dynamic"
-          placement="bottom-right"
-        >
-          <a
-            class="nav-link"
-            tabindex="0"
-            ngbDropdownToggle
-            id="navbarDropdown3"
-            role="button"
-          >
+        <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
             <img src="assets/icon/person.png" height="30px" />
           </a>
-          <div
-            ngbDropdownMenu
-            aria-labelledby="navbarDropdown3"
-            class="dropdown-menu"
-          >
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
             <a ngbDropdownItem disabled>สวัสดีคุณ {{ user.firstName }}</a>
             <a ngbDropdownItem href="/profile">ข้อมูลส่วนตัว</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()"
-              >ตั้งค่า</a
-            >
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">ตั้งค่า</a>
             <a ngbDropdownItem (click)="signout()">ลงชื่อออก</a>
           </div>
         </li>

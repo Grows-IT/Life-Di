@@ -37,17 +37,42 @@
 }
 .navbar-nav,
 .ml-auto {
-flex: 1;
-display: flex;
-justify-content: flex-end;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
-li.nav-item{
-  padding: 0 20px;
+li.nav-item {
+  padding: 0 10px;
 }
 
 #lifedi-navbar {
   form {
     padding-left: 40px;
   }
+}
+
+#custom-search-input .search-query {
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+
+#custom-search-input button {
+  border: 0;
+  background: none;
+  padding: 2px 5px;
+  // margin-top: 4px;
+  position: relative;
+  left: -38px;
+  top: 8px;
+  margin-bottom: 0;
+  border-radius: 25px;
+
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.search-query:focus + button {
+  z-index: 200;
 }
