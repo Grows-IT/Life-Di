@@ -170,5 +170,15 @@ export class ActivitiesComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
+  getStatus(e) {
+    const end = new Date(e).getTime();
+    const now = new Date().getTime();
+
+    if (now > end) {
+      return 'หมดเวลาการสมัคร';
+    } else {
+      return 'สามารถลงทะเบียนได้';
+    }
+  }
 
 }
