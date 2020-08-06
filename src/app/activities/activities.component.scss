@@ -16,7 +16,44 @@ button:focus {
 }
 .suggestactivity{
   background-color: #dd598c;
-  height: 100vh;
+  height: 80vh;
   border-radius: 20px;
   margin: 10px 0;
 }
+
+/* For the "inset" look only */
+html {
+  overflow: auto;
+}
+body {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  padding: 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: white;
+}
+// ::-webkit-scrollbar-thumb:window-inactive {
+// background: rgba(255,0,0,0.4);
+// }
