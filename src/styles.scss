@@ -66,8 +66,8 @@ ngb-tabset {
   .nav-link.active {
     color: #dd598c !important;
   }
-  small{
-    color: #DD598C !important;
+  small {
+    color: #dd598c !important;
   }
 }
 
@@ -92,6 +92,12 @@ ngb-accordion {
   .card-body {
     padding: 0.7rem 2.7rem !important;
   }
+}
+
+.cal-month-view .cal-open-day-events {
+  color: black;
+  background-color: lavenderblush;
+  box-shadow: none;
 }
 
 @media (min-width: 1200px) {

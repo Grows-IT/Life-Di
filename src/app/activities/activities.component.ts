@@ -71,6 +71,7 @@ export class ActivitiesComponent implements OnInit {
   // tslint:disable-next-line: member-ordering
   refresh: Subject<any> = new Subject();
 
+  // CalendarEvent อาจจะต้อง custom ให้เข้ากับโปรเจค
   events: CalendarEvent[];
 
   activeDayIsOpen = true;
@@ -98,6 +99,8 @@ export class ActivitiesComponent implements OnInit {
           allEvent.push(event);
         }
         this.events = allEvent;
+        console.log(this.events);
+
       }
     });
   }
@@ -146,7 +149,7 @@ export class ActivitiesComponent implements OnInit {
           primary: '#001400',
           secondary: '#FDF1BA',
         },
-        draggable: true,
+        draggable: false,
         resizable: {
           beforeStart: true,
           afterEnd: true,
