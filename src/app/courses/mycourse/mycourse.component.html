@@ -17,7 +17,7 @@
 
     <div *ngIf="myCourse">
       <div class="row">
-        <div id="cardCourse" class="col-4" *ngFor="let course of myCourse">
+        <div id="cardCourse" class="col-lg-3 col-md-4 col-sm-6" *ngFor="let course of myCourse">
           <a [routerLink]="['/course', course.courseId]">
             <div class="card h-100">
               <h5 class="card-title text-center">{{ course.courseTitle }}</h5>
