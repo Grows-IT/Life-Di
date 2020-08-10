@@ -104,6 +104,57 @@ ngb-accordion {
   color: #dd598c !important;
 }
 
+// calendar activity
+
+.cal-month-view .cal-cell-top {
+  min-height: 40px;
+}
+
+.cal-month-view .cal-day-cell {
+  min-height: 65px;
+  max-height: 65px;
+}
+
+.cal-month-view .cal-day-badge {
+  background-color: #dd598c;
+}
+
+#adminActivity {
+  // เลขวัน
+  .cal-month-view .cal-day-number {
+    font-size: 0.9em;
+    margin-top: 0px;
+  }
+
+  // เลขกิจกรรม
+  .cal-month-view .cal-day-badge {
+    margin-top: 0;
+  }
+
+  // จุดกิจกรรม
+  .cal-month-view .cal-event {
+    width: 8px;
+    height: 8px;
+  }
+
+  // ตอนกดแล้วโชว์กิจกรรมทั้งหมดของวัน
+  .cal-month-view .cal-open-day-events {
+    padding: 10px;
+  }
+
+  // ขนาดตัวอักษรของกิจกรรม
+  .cal-month-view .cal-event-title {
+    font-size: 0.8em;
+  }
+
+  .table-responsive {
+    height: 75vh;
+    max-height: 75vh;
+  }
+}
+
+// end calendar activity
+
 @media (min-width: 1200px) {
   .container {
     max-width: 90vw !important;

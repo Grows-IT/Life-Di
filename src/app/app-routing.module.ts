@@ -9,6 +9,9 @@ import { CoursesComponent } from './courses/courses.component';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
 import { TopicComponent } from './courses/topic/topic.component';
 import { ActivitiesComponent } from './activities/activities.component';
+import { MenuComponent } from './admin/menu/menu.component';
+import { ActivityScheduleComponent } from './admin/activity-schedule/activity-schedule.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
 
 
 const routes: Routes = [
@@ -42,6 +45,16 @@ const routes: Routes = [
   }, {
     path: 'activity',
     component: ActivitiesComponent
+  }, {
+    path: 'admin',
+    component: MenuComponent
+  }, {
+    path: 'admin/activity-schedule',
+    component: ActivityScheduleComponent
+  }, {
+    path: 'admin/user-management',
+    component: UserManagementComponent
+
   }
 ];
 

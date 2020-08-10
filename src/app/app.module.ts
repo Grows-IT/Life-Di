@@ -16,6 +16,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { LifediNavbarComponent } from './lifediComponent/lifedi-navbar/lifedi-navbar.component';
 import { CoursesComponent } from './courses/courses.component';
+import { ActivitiesComponent } from './activities/activities.component';
+import { MenuComponent } from './admin/menu/menu.component';
+import { ActivityScheduleComponent } from './admin/activity-schedule/activity-schedule.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { MycourseComponent } from './courses/mycourse/mycourse.component';
+import { TopicComponent } from './courses/topic/topic.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,13 +29,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { MycourseComponent } from './courses/mycourse/mycourse.component';
-import { TopicComponent } from './courses/topic/topic.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { ActivitiesComponent } from './activities/activities.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { FormsModule } from '@angular/forms';
+
 
 const MaterialComponent = [
   MatInputModule,
@@ -58,7 +62,10 @@ const NGBComponent = [
     CoursesComponent,
     MycourseComponent,
     TopicComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    MenuComponent,
+    ActivityScheduleComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,
