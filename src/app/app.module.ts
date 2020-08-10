@@ -31,6 +31,8 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { FormsModule } from '@angular/forms';
 import { JournalComponent } from './journal/journal.component';
+import { JournalsComponent } from './journals/journals.component';
+import { NewsComponent } from './news/news.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -60,7 +62,9 @@ const NGBComponent = [
     MycourseComponent,
     TopicComponent,
     ActivitiesComponent,
-    JournalComponent
+    JournalComponent,
+    JournalsComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

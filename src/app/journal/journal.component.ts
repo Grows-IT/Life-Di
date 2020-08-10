@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from '../home/home.service';
+import { JournalService } from './journal.service';
 
 @Component({
   selector: 'app-journal',
@@ -8,14 +8,14 @@ import { HomeService } from '../home/home.service';
 })
 export class JournalComponent implements OnInit {
 
-  constructor(public homeService: HomeService) { }
+  constructor(public journalService: JournalService) { }
 
   journal: any;
 
   ngOnInit(): void {
-    this.homeService.getJournal().subscribe((jour) => {
-      this.journal = jour;
+    this.journalService.getJournal().subscribe((jour) => {
       console.log(jour);
+      this.journal = jour;
     });
   }
 

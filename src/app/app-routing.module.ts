@@ -10,6 +10,8 @@ import { MycourseComponent } from './courses/mycourse/mycourse.component';
 import { TopicComponent } from './courses/topic/topic.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { JournalComponent } from './journal/journal.component';
+import { JournalsComponent } from './journals/journals.component';
+import { NewsComponent } from './news/news.component';
 
 
 const routes: Routes = [
@@ -46,6 +48,12 @@ const routes: Routes = [
   }, {
     path: 'journal',
     component: JournalComponent
+  }, {
+    path: 'journals',
+    component: JournalsComponent
+  }, {
+    path: 'news',
+    component: NewsComponent
   }
 ];
 

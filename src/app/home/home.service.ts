@@ -30,4 +30,8 @@ export class HomeService {
   getCourses(){
     return this.http.get(environment.dbUrl + '/courseshome');
   }
+
+  getNews(){
+    return this.http.get(environment.dbUrl + '/newshome');
+  }
 }
