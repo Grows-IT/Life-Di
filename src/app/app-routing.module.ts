@@ -12,6 +12,9 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { MenuComponent } from './admin/menu/menu.component';
 import { ActivityScheduleComponent } from './admin/activity-schedule/activity-schedule.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { JournalComponent } from './journal/journal.component';
+import { JournalsComponent } from './journals/journals.component';
+import { NewsComponent } from './news/news.component';
 
 
 const routes: Routes = [
@@ -54,7 +57,15 @@ const routes: Routes = [
   }, {
     path: 'admin/user-management',
     component: UserManagementComponent
-
+  }, {
+    path: 'journal',
+    component: JournalComponent
+  }, {
+    path: 'journals',
+    component: JournalsComponent
+  }, {
+    path: 'news',
+    component: NewsComponent
   }
 ];
 

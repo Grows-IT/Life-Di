@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   allJournal: any;
   allCourses: any;
   bannerPic: any;
+  allNews: any;
 
   ngOnInit(): void {
     this.homeService.getJournal().subscribe((jour) => {
@@ -36,6 +37,10 @@ export class HomeComponent implements OnInit {
     this.homeService.getCourses().subscribe((course) => {
       this.allCourses = course;
       console.log(course);
+    });
+
+    this.homeService. getNews().subscribe((news) => {
+      this.allNews = news;
     });
 
     this.homeService.getBanner().subscribe((banner) => this.bannerPic = banner);

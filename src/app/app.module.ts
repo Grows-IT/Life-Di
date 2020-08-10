@@ -33,6 +33,9 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { FormsModule } from '@angular/forms';
+import { JournalComponent } from './journal/journal.component';
+import { JournalsComponent } from './journals/journals.component';
+import { NewsComponent } from './news/news.component';
 
 
 const MaterialComponent = [
@@ -65,7 +68,10 @@ const NGBComponent = [
     ActivitiesComponent,
     MenuComponent,
     ActivityScheduleComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    JournalComponent,
+    JournalsComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
