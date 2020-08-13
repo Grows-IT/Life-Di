@@ -15,6 +15,7 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { JournalComponent } from './journal/journal.component';
 import { JournalsComponent } from './journals/journals.component';
 import { NewsComponent } from './news/news.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,9 @@ const routes: Routes = [
   }, {
     path: 'admin/user-management',
     component: UserManagementComponent
+  }, {
+    path: 'admin/course-management',
+    component: CourseManagementComponent
   }, {
     path: 'journal',
     component: JournalComponent

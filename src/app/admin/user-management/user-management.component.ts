@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class UserManagementComponent implements OnInit {
   @ViewChild('modalContent', { static: true })
   modalContent: TemplateRef<any>;
+  typeUser = 'admin';
 
   users;
   modalData: {
@@ -29,5 +30,17 @@ export class UserManagementComponent implements OnInit {
   edit(event: CalendarEvent): void {
     this.modalData = { event };
     this.modal.open(this.modalContent, { size: 'lg' });
+  }
+
+  admin() {
+    this.typeUser = 'admin';
+  }
+
+  teacher() {
+    this.typeUser = 'teacher';
+  }
+
+  user() {
+    this.typeUser = 'user';
   }
 }

@@ -3,22 +3,18 @@
 <div class="container" style="margin-top: 76px;">
   <div class="row">
     <div class="col-12">
-      <h3 class="text-center" style="margin: 15px 0;">จัดการสมาชิก</h3>
+      <h3 class="text-center" style="margin: 15px 0;">จัดการคอร์ส</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-6">
       <a mat-button (click)="admin()" [ngStyle]="{'color': typeUser === 'admin' ? 'red' : ''}"
         style="padding: 6px; margin-right: 5px;">
-        จัดการ Admin
+        คอร์สที่เปิดลงทะเบียน
       </a>
       <a mat-button (click)="teacher()" [ngStyle]="{'color': typeUser === 'teacher' ? 'red' : ''}"
         style="padding: 6px; margin-left: 5px;">
-        จัดการ Teacher
-      </a>
-      <a mat-button (click)="user()" [ngStyle]="{'color': typeUser === 'user' ? 'red' : ''}"
-        style="padding: 6px; margin-left: 5px;">
-        จัดการ User
+        คอร์สที่ปิดลงทะเบียน
       </a>
     </div>
     <div class="col-6">
@@ -29,15 +25,13 @@
       <div *ngIf="typeUser === 'teacher'">
         <input type="text" class="form-control" placeholder="ค้นหา teacher" style="width: 70%; float: right;" />
       </div>
-      <div *ngIf="typeUser === 'admin'">
-        <input type="text" class="form-control" placeholder="ค้นหา admin" style="width: 70%; float: right;" />
-      </div>
       <!-- </form> -->
     </div>
   </div>
+
   <div class="row">
     <div class="table-responsive" style="max-height: 74vh; border: 1px solid #dee2e6; width: 100%; overflow-y: scroll;">
-      <table class="table table-bordered" *ngIf="typeUser === 'user'">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>Email</th>
@@ -53,7 +47,7 @@
             <th>จัดการ</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="typeUser === 'user'">
           <tr *ngFor="let user of users">
             <td>
               {{user.email}}
@@ -92,23 +86,8 @@
             </td>
           </tr>
         </tbody>
-      </table>
 
-      <table class="table table-bordered" *ngIf="typeUser === 'teacher'">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>ชื่อ</th>
-            <th>นามสกุล</th>
-            <th>คณะ</th>
-            <th>ตำแหน่ง</th>
-            <th>ประวัติ</th>
-            <th>รูป</th>
-            <th>เบอร์โทร</th>
-            <th>จัดการ</th>
-          </tr>
-        </thead>
-        <tbody>
+        <tbody *ngIf="typeUser === 'user'">
           <tr *ngFor="let user of users">
             <td>
               {{user.email}}
@@ -142,46 +121,6 @@
           </tr>
         </tbody>
       </table>
-
-      <table class="table table-bordered" *ngIf="typeUser === 'admin'">
-        <thead>
-          <tr>
-            <th>Email</th>
-            <th>ชื่อ</th>
-            <th>นามสกุล</th>
-            <th>จัดการ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>
-              {{user.email}}
-            </td>
-            <td>
-              {{user.name}}
-            </td>
-            <td>
-              {{user.lastname}}
-            </td>
-            <td>
-              <a mat-icon-button (click)="edit($event.event)">
-                <mat-icon>create</mat-icon>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>
-
-<ng-template #modalContent let-close="close">
-  <div class="modal-header">
-    <h5 class="modal-title">จัดการผู้ใช้งาน </h5>
-    <button type="button" class="close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-  </div>
-</ng-template>
