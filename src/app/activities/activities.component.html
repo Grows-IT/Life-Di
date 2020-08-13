@@ -49,14 +49,6 @@
           [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
           (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
-        <!-- <mwl-calendar-week-view *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
-          [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
-          (eventTimesChanged)="eventTimesChanged($event)">
-        </mwl-calendar-week-view>
-        <mwl-calendar-day-view *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
-          [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
-          (eventTimesChanged)="eventTimesChanged($event)">
-        </mwl-calendar-day-view> -->
       </div>
     </div>
   </div>
@@ -112,7 +104,7 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div>-->
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">
@@ -124,12 +116,10 @@
   <div class="modal-body">
     ราคา : {{modalData?.event.price}} ฿<br>
     สถานะ : {{getStatus(modalData?.event.end)}} <br>
-    สถานที่ : ?? <br>
+    สถานที่ : SPE TOWER <br>
     วัน-เวลา : {{modalData?.event.start.getTime() | date: 'medium'}} -
     {{modalData?.event.end.getTime() | date: 'medium'}}<br>
     <div>
-      Event:
-      <pre>{{ modalData?.event | json }}</pre>
     </div>
   </div>
   <div class="modal-footer">
@@ -137,4 +127,4 @@
       OK
     </button>
   </div>
-</ng-template> -->
+</ng-template>
