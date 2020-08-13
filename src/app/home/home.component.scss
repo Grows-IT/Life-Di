@@ -20,3 +20,42 @@ ngb-carousel:focus {
   float: right;
   padding: 0 0 10px 0;
 }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: gray white;
+}
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: white;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+  border: 3px solid white;
+}
+
+/* this stuff below doesn't
+   affect scrollbar styling */
+html {
+  background: lightgrey;
+  overflow: hidden;
+}
+body {
+  height: 100vh;
+  background: whitesmoke;
+  overflow-y: auto;
+  max-width: 310px;
+  margin: 0 auto;
+  padding: 2rem;
+  font: 100%/1.4 serif;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+p {
+  margin: 0 0 1.5em;
+}
+* {
+  box-sizing: border-box;
+}
