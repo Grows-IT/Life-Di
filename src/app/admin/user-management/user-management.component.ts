@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { UserManagementService } from './user-management.service';
+import { CalendarEvent } from 'angular-calendar';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-user-management',
@@ -7,9 +9,15 @@ import { UserManagementService } from './user-management.service';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-  users;
+  @ViewChild('modalContent', { static: true })
+  modalContent: TemplateRef<any>;
 
-  constructor(private userManagement: UserManagementService) { }
+  users;
+  modalData: {
+    event: CalendarEvent;
+  };
+
+  constructor(private userManagement: UserManagementService, private modal: NgbModal) { }
 
   ngOnInit(): void {
     this.userManagement.getUser().subscribe((users) => {
@@ -18,4 +26,8 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
+  edit(event: CalendarEvent): void {
+    this.modalData = { event };
+    this.modal.open(this.modalContent, { size: 'lg' });
+  }
 }

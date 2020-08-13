@@ -15,6 +15,12 @@ import { startOfDay, endOfDay, isSameMonth, isSameDay } from 'date-fns';
 export class ActivityScheduleComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
   user: SocialUser;
+  isIncoming: boolean;
+
+  // CalendarEvent อาจจะต้อง custom ให้เข้ากับโปรเจค
+  incomingActivity: CalendarEvent[];
+  passedActivity: CalendarEvent[];
+
   // tslint:disable-next-line: member-ordering
   view: CalendarView = CalendarView.Month;
 
@@ -31,7 +37,7 @@ export class ActivityScheduleComponent implements OnInit {
   };
 
   // tslint:disable-next-line: member-ordering
-  actions: CalendarEventAction[] = [
+  incomingActivityActions: CalendarEventAction[] = [
     {
       label: '<i class="fas fa-fw fa-pencil-alt"></i>',
       a11yLabel: 'Edit',
@@ -43,7 +49,18 @@ export class ActivityScheduleComponent implements OnInit {
       label: '<i class="fas fa-fw fa-trash-alt"></i>',
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
+        this.incomingActivity = this.incomingActivity.filter((iEvent) => iEvent !== event);
+        this.handleEvent('Deleted', event);
+      },
+    },
+  ];
+
+  passedActivityActions: CalendarEventAction[] = [
+    {
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.passedActivity = this.passedActivity.filter((iEvent) => iEvent !== event);
         this.handleEvent('Deleted', event);
       },
     },
@@ -59,6 +76,8 @@ export class ActivityScheduleComponent implements OnInit {
   constructor(private modal: NgbModal, private activitiesService: ActivitiesService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.isIncoming = true;
+
     this.authService.getUser().subscribe(user => {
       if (user) {
         this.user = JSON.parse(user);
@@ -67,7 +86,9 @@ export class ActivityScheduleComponent implements OnInit {
 
     this.activitiesService.getActivity(this.user).subscribe(e => {
       if (e) {
-        const allEvent = [];
+        const passedActivity = [];
+        const incomingActivity = [];
+
         // tslint:disable-next-line: prefer-for-of
         for (let i = 0; i < e.length; i++) {
           console.log(e[i]);
@@ -75,11 +96,23 @@ export class ActivityScheduleComponent implements OnInit {
           const event = e[i];
           event.start = new Date(event.start);
           event.end = new Date(event.end);
+          console.log(event.start.getTime());
+          if (event.end.getTime() > new Date().getTime()) {
+            console.log('a');
+
+            incomingActivity.push(event);
+          } else {
+            console.log('b');
+
+            passedActivity.push(event);
+          }
           // event.actions = this.actions;
-          allEvent.push(event);
+          // allEvent.push(event);
         }
-        this.events = allEvent;
-        console.log(this.events);
+        this.incomingActivity = incomingActivity;
+        this.passedActivity = passedActivity;
+        // this.events = allEvent;
+        // console.log(this.events);
 
       }
     });
@@ -100,7 +133,7 @@ export class ActivityScheduleComponent implements OnInit {
   }
 
   eventTimesChanged({ event, newStart, newEnd, }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
+    this.incomingActivity = this.incomingActivity.map((iEvent) => {
       if (iEvent === event) {
         return {
           ...event,
@@ -119,8 +152,8 @@ export class ActivityScheduleComponent implements OnInit {
   }
 
   addEvent(): void {
-    this.events = [
-      ...this.events,
+    this.incomingActivity = [
+      ...this.incomingActivity,
       {
         title: '',
         start: startOfDay(new Date()),
@@ -138,8 +171,12 @@ export class ActivityScheduleComponent implements OnInit {
     ];
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
+  deleteIncomingEvent(eventToDelete: CalendarEvent) {
+    this.incomingActivity = this.incomingActivity.filter((event) => event !== eventToDelete);
+  }
+
+  deletePassedEvent(eventToDelete: CalendarEvent) {
+    this.passedActivity = this.passedActivity.filter((event) => event !== eventToDelete);
   }
 
   setView(view: CalendarView) {
@@ -160,4 +197,13 @@ export class ActivityScheduleComponent implements OnInit {
       return 'สามารถลงทะเบียนได้';
     }
   }
+
+  incoming() {
+    this.isIncoming = true;
+  }
+
+  passed() {
+    this.isIncoming = false;
+  }
+
 }

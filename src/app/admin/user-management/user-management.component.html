@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="table-responsive" style="height: 80vh; border: 1px solid #dee2e6; width: 100%; overflow-y: auto;">
+    <div class="table-responsive" style="max-height: 80vh; border: 1px solid #dee2e6; width: 100%; overflow-y: scroll;">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -19,7 +19,7 @@
           </tr>
         </thead>
 
-        <tbody style="overflow-y: auto; height: 100%;">
+        <tbody>
           <tr *ngFor="let user of users">
             <td>
               {{user.email}}
@@ -34,7 +34,12 @@
               {{user.provider}}
             </td>
             <td>
-
+              <a mat-icon-button (click)="edit($event.event)">
+                <mat-icon>create</mat-icon>
+                <!-- <span class="material-icons" style="line-height: 0.5;">
+                  create
+                </span> -->
+              </a>
             </td>
           </tr>
         </tbody>
@@ -42,3 +47,14 @@
     </div>
   </div>
 </div>
+
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">จัดการผู้ใช้งาน </h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  </div>
+</ng-template>

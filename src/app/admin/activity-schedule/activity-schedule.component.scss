@@ -46,7 +46,7 @@ button:focus {
 }
 
 .table-responsive::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   border: 2px solid #ffffff;
 }
@@ -54,4 +54,35 @@ button:focus {
 .table-responsive::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: #ffffff;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+
+  td {
+    vertical-align: baseline;
+    // padding: 11px 12px 7px;
+  }
+}
+
+th,
+td {
+  background: #fff;
+  padding: 8px 16px;
+}
+
+.table-responsive {
+  overflow: auto;
+}
+
+.table-responsive thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+a.mat-button {
+  vertical-align: -webkit-baseline-middle;
 }
