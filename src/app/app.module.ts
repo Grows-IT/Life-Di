@@ -22,6 +22,9 @@ import { ActivityScheduleComponent } from './admin/activity-schedule/activity-sc
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
 import { TopicComponent } from './courses/topic/topic.component';
+import { JournalComponent } from './journal/journal.component';
+import { JournalsComponent } from './journals/journals.component';
+import { NewsComponent } from './news/news.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,9 +36,6 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { FormsModule } from '@angular/forms';
-import { JournalComponent } from './journal/journal.component';
-import { JournalsComponent } from './journals/journals.component';
-import { NewsComponent } from './news/news.component';
 
 
 const MaterialComponent = [
