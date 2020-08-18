@@ -1,0 +1,180 @@
+<app-lifedi-navbar></app-lifedi-navbar>
+
+<div class="container" style="margin-top: 76px;">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center" style="margin: 15px 0;">จัดการคอร์ส
+        <button class="btn btn-primary float-right" style="margin: 0" (click)="addCourse()">
+          เพิ่มกิจกรรม
+        </button>
+      </h3>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <!-- <button class="btn btn-success float-right">
+        บันทึก
+      </button> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <a mat-button (click)="courseOpen()" [ngStyle]="{'color': isCouseOpen ? 'red' : ''}"
+        style="padding: 6px; margin-right: 5px;">
+        คอร์สที่เปิดลงทะเบียน
+      </a>
+      <!-- <a mat-button (click)="courseClose()" [ngStyle]="{'color': !isCouseOpen ? 'red' : ''}"
+        style="padding: 6px; margin-left: 5px;">
+        คอร์สที่ปิดลงทะเบียน
+      </a> -->
+    </div>
+    <div class="col-6">
+      <!-- <form class="form-inline float-right"> -->
+      <div>
+        <input type="text" class="form-control" placeholder="ค้นหาคอร์ส" style="width: 70%; float: right;" />
+      </div>
+      <!-- </form> -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="table-responsive" style="max-height: 74vh; border: 1px solid #dee2e6; width: 100%; overflow-y: scroll;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ผู้สร้าง</th>
+            <th>ชื่อคอร์ส</th>
+            <th>หมวดหมู่</th>
+            <!-- <th>วันที่สร้าง</th>
+            <th>วันที่หมดอายุ</th> -->
+            <th>จำนวนผู้สมัคร</th>
+            <th>ห้องสนทนา</th>
+            <th>จัดการ</th>
+          </tr>
+        </thead>
+        <!-- <tbody *ngIf="isCouseOpen"> -->
+        <tbody *ngIf="isCouseOpen">
+          <tr *ngFor="let course of coursesOpen">
+            <td>
+              {{course.aboutCourse.courseBy.name}}
+            </td>
+            <td>
+              <a [routerLink]="['/course', course.courseId]">{{course.courseTitle}}</a>
+            </td>
+            <td>
+              {{course.courseCategory}}
+            </td>
+            <!-- <td>
+              {{course.courseStart}}
+            </td>
+            <td>
+              {{course.courseEnd}}
+            </td> -->
+            <td>
+              จำนวนผู้สมัคร
+            </td>
+            <td>
+              ห้องสนทนา
+            </td>
+            <td>
+              <a mat-icon-button (click)="edit(course)">
+                <mat-icon>create</mat-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+
+        <!-- <tbody *ngIf="!isCouseOpen">
+          <tr *ngFor="let course of coursesClose">
+            <td>
+              {{course.aboutCourse.courseBy.name}}
+            </td>
+            <td>
+              <a [routerLink]="['/course', course.courseId]">{{course.courseTitle}}</a>
+            </td>
+            <td>
+              {{course.courseCategory}}
+            </td>
+            <td>
+              จำนวนผู้สมัคร
+            </td>
+            <td>
+              ห้องสนทนา
+            </td>
+            <td>
+              <a mat-icon-button (click)="edit(course)">
+                <mat-icon>create</mat-icon>
+              </a>
+            </td>
+          </tr>
+        </tbody> -->
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalContent let-close="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">จัดการผู้ใช้งาน </h5>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="courseForm">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="courseTitle">ชื่อคอร์สเรียน</label>
+          <input type="text" class="form-control" id="courseTitle" placeholder="ชื่อคอร์สเรียน" formControlName="courseTitle" [value]="modalData?.course.courseTitle">
+        </div>
+        <!-- <div class="form-group col-md-6">
+          <label for="courseInfo">เกี่ยวกับคอร์ส (คำบรรยายสั้นๆ)</label>
+          <input type="text" class="form-control" id="courseInfo" placeholder="เกี่ยวกับคอร์ส">
+        </div> -->
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="courseDetail">รายละเอียดคอร์สเรียน</label>
+          <textarea id="courseDetail" class="form-control" rows="3.5" cols="50" formControlName="courseInfo"
+            placeholder="รายละเอียดคอร์สเรียน" [value]="modalData?.course.courseInfo"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="courseCategory">หมวดหมู่</label>
+          <select id="courseCategory" class="form-control" formControlName="courseCategory">
+            <option selected>จิตวิทยา</option>
+            <option>ประวัติศาสตร์</option>
+            <option>คอมพิวเตอร์</option>
+            <option>วิศวกรรมศาสตร์</option>
+            <option>ภาษาต่างประเทศ</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="coursePic">อัพโหลดรูปหน้าปกคอร์สเรียน</label>
+          <input type="text" class="form-control" id="coursePic" placeholder="อัพโหลดรูปภาพ" formControlName="coursePic" [value]="modalData?.course.coursePic">
+        </div>
+      </div>
+      <!-- <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div> -->
+      <button class="btn btn-primary" *ngIf="modalData?.course" (click)="update($event)">ยืนยันการแก้ไข</button>
+      <button class="btn btn-primary" *ngIf="!modalData?.course" (click)="confirm($event)" [disabled]="!courseForm.valid">ยืนยัน</button>
+    </form>
+    <!-- <pre>
+    {{modalData?.course|json}}
+    </pre> -->
+  </div>
+</ng-template>

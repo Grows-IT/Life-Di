@@ -15,7 +15,9 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { JournalComponent } from './journal/journal.component';
 import { JournalsComponent } from './journals/journals.component';
 import { NewsComponent } from './news/news.component';
-import { CourseManagementComponent } from './admin/course-management/course-management.component';
+import { CoursesManagementComponent } from './admin/courses-management/courses-management.component';
+import { JournalsManagementComponent } from './admin/journals-management/journals-management.component';
+import { ForumsManagementComponent } from './admin/forums-management/forums-management.component';
 
 
 const routes: Routes = [
@@ -35,8 +37,7 @@ const routes: Routes = [
   }, {
     path: 'profile',
     component: ProfileComponent
-  }
-  , {
+  }, {
     path: 'courses',
     component: CoursesComponent,
     canLoad: [AuthGuard]
@@ -59,8 +60,14 @@ const routes: Routes = [
     path: 'admin/user-management',
     component: UserManagementComponent
   }, {
-    path: 'admin/course-management',
-    component: CourseManagementComponent
+    path: 'admin/courses-management',
+    component: CoursesManagementComponent
+  }, {
+    path: 'admin/journals-management',
+    component: JournalsManagementComponent
+  }, {
+    path: 'admin/forums-management',
+    component: ForumsManagementComponent
   }, {
     path: 'journal',
     component: JournalComponent

@@ -148,7 +148,7 @@ export class ActivityScheduleComponent implements OnInit {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modal.open(this.modalContent, { size: 'lg', scrollable: true, centered: true });
   }
 
   addEvent(): void {

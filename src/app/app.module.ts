@@ -25,6 +25,9 @@ import { TopicComponent } from './courses/topic/topic.component';
 import { JournalComponent } from './journal/journal.component';
 import { JournalsComponent } from './journals/journals.component';
 import { NewsComponent } from './news/news.component';
+import { CoursesManagementComponent } from './admin/courses-management/courses-management.component';
+import { JournalsManagementComponent } from './admin/journals-management/journals-management.component';
+import { ForumsManagementComponent } from './admin/forums-management/forums-management.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,9 +38,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { FormsModule } from '@angular/forms';
-import { CourseManagementComponent } from './admin/course-management/course-management.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const MaterialComponent = [
   MatInputModule,
@@ -73,7 +74,9 @@ const NGBComponent = [
     JournalComponent,
     JournalsComponent,
     NewsComponent,
-    CourseManagementComponent
+    CoursesManagementComponent,
+    JournalsManagementComponent,
+    ForumsManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +85,7 @@ const NGBComponent = [
     SocialLoginModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialComponent,
     NGBComponent,
     CalendarModule.forRoot({

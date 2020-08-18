@@ -20,18 +20,18 @@ export class HomeService {
   ) { }
 
   getJournal(){
-    return this.http.get(environment.dbUrl + '/journalshome');
+    return this.http.get(environment.dbUrl + '/journalsHome');
   }
 
   getBanner(){
-    return this.http.get(environment.dbUrl + '/bannerhome');
+    return this.http.get(environment.dbUrl + '/bannerHome');
   }
 
   getCourses(){
-    return this.http.get(environment.dbUrl + '/courseshome');
+    return this.http.get(environment.dbUrl + '/coursesHome');
   }
 
   getNews(){
-    return this.http.get(environment.dbUrl + '/newshome');
+    return this.http.get(environment.dbUrl + '/newsHome');
   }
 }

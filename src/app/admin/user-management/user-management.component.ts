@@ -29,7 +29,7 @@ export class UserManagementComponent implements OnInit {
 
   edit(event: CalendarEvent): void {
     this.modalData = { event };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modal.open(this.modalContent, { size: 'lg', scrollable: true, centered: true });
   }
 
   admin() {

@@ -10,7 +10,7 @@
     </a>
   </article>
   <article class=" strips__strip">
-    <a [routerLink]="['/admin/course-management']">
+    <a [routerLink]="['/admin/courses-management']">
       <div class="strip__content">
         <h1 class="strip__title">จัดการคอร์ส</h1>
       </div>
@@ -24,15 +24,18 @@
     </a>
   </article>
   <article class="strips__strip">
-    <div class="strip__content">
-      <h1 class="strip__title">บทความ</h1>
-    </div>
+    <a [routerLink]="['/admin/journals-management']">
+      <div class="strip__content">
+        <h1 class="strip__title">จัดการบทความ, ข่าว</h1>
+      </div>
+    </a>
   </article>
   <article class="strips__strip">
-    <div class="strip__content">
-      <h1 class="strip__title">กระทู้</h1>
-
-    </div>
+    <a [routerLink]="['/admin/forums-management']">
+      <div class="strip__content">
+        <h1 class="strip__title">กระทู้</h1>
+      </div>
+    </a>
   </article>
   <i class="fa fa-close strip__close"></i>
 </section>
