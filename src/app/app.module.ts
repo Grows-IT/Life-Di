@@ -4,13 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 
 import { HomeComponent } from './home/home.component';
 import { NgbPaginationModule, NgbAlertModule, NgbDropdownModule, NgbModule, NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 // For MDB Angular Free
-import { CarouselModule, WavesModule, CardsModule, ButtonsModule } from 'angular-bootstrap-md';
+import { CarouselModule, WavesModule, CardsModule, ButtonsModule, ChartsModule } from 'angular-bootstrap-md';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
@@ -22,12 +21,12 @@ import { ActivityScheduleComponent } from './admin/activity-schedule/activity-sc
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { MycourseComponent } from './courses/mycourse/mycourse.component';
 import { TopicComponent } from './courses/topic/topic.component';
-import { JournalComponent } from './journal/journal.component';
 import { JournalsComponent } from './journals/journals.component';
+import { JournalComponent } from './journals/journal/journal.component';
 import { NewsComponent } from './news/news.component';
 import { CoursesManagementComponent } from './admin/courses-management/courses-management.component';
 import { JournalsManagementComponent } from './admin/journals-management/journals-management.component';
-import { ForumsManagementComponent } from './admin/forums-management/forums-management.component';
+import { WebboardsManagementComponent } from './admin/webboards-management/webboards-management.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -39,6 +38,10 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WebboardsComponent } from './webboards/webboards.component';
+import { ResearchComponent } from './admin/research/research.component';
+import { SystemReportComponent } from './admin/system-report/system-report.component';
+import { TrackingComponent } from './admin/tracking/tracking.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -51,6 +54,7 @@ const MaterialComponent = [
   WavesModule,
   CardsModule,
   ButtonsModule,
+  ChartsModule
 ];
 const NGBComponent = [
   NgbModule
@@ -76,7 +80,11 @@ const NGBComponent = [
     NewsComponent,
     CoursesManagementComponent,
     JournalsManagementComponent,
-    ForumsManagementComponent,
+    WebboardsManagementComponent,
+    WebboardsComponent,
+    ResearchComponent,
+    SystemReportComponent,
+    TrackingComponent,
   ],
   imports: [
     BrowserModule,

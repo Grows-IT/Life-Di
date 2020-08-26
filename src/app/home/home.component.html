@@ -3,16 +3,9 @@
 <div style="margin-top: 76px;">
   <ngb-carousel *ngIf="bannerPic">
     <ng-template ngbSlide>
-      <div
-        class="picsum-img-wrapper"
-        style="width: auto; height: 50vh; max-height: 400px;"
-      >
-        <img
-          [src]="bannerPic[0]"
-          alt="Random first slide"
-          style="width: 100%; min-height: 400px; height: auto;"
-          align="center"
-        />
+      <div class="picsum-img-wrapper" style="width: auto; height: 50vh; max-height: 400px;">
+        <img [src]="bannerPic[0]" alt="Random first slide" style="width: 100%; min-height: 400px; height: auto;"
+          align="center" />
       </div>
       <div class="carousel-caption">
         <h3>First slide label</h3>
@@ -20,21 +13,9 @@
       </div>
     </ng-template>
     <ng-template ngbSlide>
-      <div
-        class="picsum-img-wrapper"
-        style="
-          width: auto;
-          height: 50vh;
-          max-height: 400px;
-          text-align: center;
-        "
-      >
-        <img
-          [src]="bannerPic[1]"
-          alt="Random second slide"
-          style="width: 100%; min-height: 400px; height: auto;"
-          align="center"
-        />
+      <div class="picsum-img-wrapper" style="width: auto; height: 50vh; max-height: 400px; text-align: center;">
+        <img [src]="bannerPic[1]" alt="Random second slide" style="width: 100%; min-height: 400px; height: auto;"
+          align="center" />
       </div>
       <div class="carousel-caption">
         <h3>Second slide label</h3>
@@ -46,22 +27,20 @@
 
 <!-- ---news--- -->
 
-<div
-  id="multi-item-news"
-  class="d-none d-xl-block carousel slide carousel-multi-item controls-top"
-  data-ride="carousel"
-  *ngIf="allCourses"
->
+<div class="container-fulid d-none d-xl-block" *ngIf="allCourses">
+  <div class="row">
+    <div class="offset-1 col-10">
+      <h2 style="padding-top: 3%;">ข่าวสาร</h2>
+      <a class="more" href="/">เพิ่มเติม</a>
+    </div>
+  </div>
+</div>
+<div id="multi-item-news" class="d-none d-xl-block carousel slide carousel-multi-item controls-top" data-ride="carousel"
+  *ngIf="allCourses">
   <div class="row">
     <!--Controls-->
     <div class="col-1">
-      <button
-        mat-button
-        disableRipple
-        href="#multi-item-news"
-        data-slide="prev"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-news" data-slide="prev" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
@@ -69,28 +48,19 @@
 
     <!--Slides-->
     <div class="col-10">
-      <h2 style="padding: 3% 0;">ข่าวสาร</h2>
-      <a class="more" href="/">เพิ่มเติม</a>
       <div class="carousel-inner" role="listbox">
         <!--First slide-->
         <div class="carousel-item active">
           <div class="row">
             <div class="col-lg-2" *ngFor="let news of allNews">
               <div class="card h-100">
-                <img
-                  class="card-img-top"
-                  src="{{ news.pic }}"
-                  alt="Card image cap"
-                  style="min-height: 150px;"
-                />
+                <img class="card-img-top" src="{{ news.pic }}" alt="Card image cap" style="min-height: 150px;" />
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">{{ news.title }}</h4>
                   <p class="card-text">
                     {{ news.info }}
                   </p>
-                  <a class="mt-auto btn btn-primary" href="/news"
-                    >อ่านเพิ่มเติม</a
-                  >
+                  <a class="mt-auto btn btn-primary" href="/news">อ่านเพิ่มเติม</a>
                 </div>
               </div>
             </div>
@@ -103,12 +73,7 @@
           <div class="row">
             <div class="col-md-2" *ngFor="let news of allNews">
               <div class="card h-100">
-                <img
-                  class="card-img-top"
-                  src="{{ news.pic }}"
-                  alt="Card image cap"
-                  style="min-height: 150px;"
-                />
+                <img class="card-img-top" src="{{ news.pic }}" alt="Card image cap" style="min-height: 150px;" />
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">{{ news.title }}</h4>
                   <p class="card-text">
@@ -126,13 +91,7 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button
-        mat-button
-        disableRipple
-        href="#multi-item-news"
-        data-slide="next"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-news" data-slide="next" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
@@ -142,16 +101,11 @@
 <!--news lg screen-->
 
 <div class="container d-none d-lg-block d-xl-none">
-  <h2 style="padding: 3% 0;">ข่าวสาร</h2>
+  <h2 style="padding-top: 3%;">ข่าวสาร</h2>
   <div class="row flex-row flex-nowrap" style="overflow-x: auto;">
     <div class="col-3" *ngFor="let news of allNews">
       <div class="card">
-        <img
-          class="card-img-top"
-          src="{{ news.pic }}"
-          alt="Card image cap"
-          style="min-height: 150px;"
-        />
+        <img class="card-img-top" src="{{ news.pic }}" alt="Card image cap" style="min-height: 150px;" />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{ news.title }}</h4>
           <p class="card-text">
@@ -167,16 +121,12 @@
 <!--news under lg-->
 
 <div class="container d-lg-none d-xl-none">
-  <h2 style="padding: 3% 0;">ข่าวสาร</h2>
+  <h2 style="padding: 5% 0 3%;">ข่าวสาร</h2>
   <div class="row flex-row flex-nowrap" style="overflow-x: auto;">
     <div class="col-6" *ngFor="let news of allNews">
       <div class="card">
-        <img
-          class="card-img-top"
-          src="{{ news.pic }}"
-          alt="Card image cap"
-          style="min-height: 200px; max-height: 200px;"
-        />
+        <img class="card-img-top" src="{{ news.pic }}" alt="Card image cap"
+          style="min-height: 200px; max-height: 200px;" />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{ news.title }}</h4>
           <p class="card-text">
@@ -191,22 +141,20 @@
 
 <!-- ---courses--- -->
 
-<div
-  id="multi-item-courses"
-  class="d-none d-xl-block carousel slide carousel-multi-item controls-top"
-  data-ride="carousel"
-  *ngIf="allCourses"
->
+<div class="container-fulid d-none d-xl-block" *ngIf="allCourses">
+  <div class="row">
+    <div class="offset-1 col-10">
+      <h2 style="padding-top: 3%;">คอร์สเรียน</h2>
+      <a class="more" style="float: right;" href="/courses">เพิ่มเติม</a>
+    </div>
+  </div>
+</div>
+<div id="multi-item-courses" class="d-none d-xl-block carousel slide carousel-multi-item controls-top"
+  data-ride="carousel" *ngIf="allCourses">
   <div class="row">
     <!--Controls-->
     <div class="col-1">
-      <button
-        mat-button
-        disableRipple
-        href="#multi-item-courses"
-        data-slide="prev"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-courses" data-slide="prev" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
@@ -214,20 +162,14 @@
 
     <!--Slides-->
     <div class="col-10">
-      <h2 style="padding: 3% 0;">คอร์สเรียน</h2>
-      <a class="more" style="float: right;" href="/courses">เพิ่มเติม</a>
       <div class="carousel-inner" role="listbox">
         <!--First slide-->
         <div class="carousel-item active">
           <div class="row">
             <div class="col-lg-2" *ngFor="let course of allCourses">
               <div class="card h-100">
-                <img
-                  class="card-img-top"
-                  src="{{ course.coursePic }}"
-                  alt="Card image cap"
-                  style="min-height: 150px;"
-                />
+                <img class="card-img-top" src="{{ course.coursePic }}" alt="Card image cap"
+                  style="min-height: 150px;" />
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">{{ course.courseTitle }}</h4>
                   <p class="mt-auto card-text">
@@ -246,12 +188,8 @@
           <div class="row">
             <div class="col-md-2" *ngFor="let course of allCourses">
               <div class="card h-100">
-                <img
-                  class="card-img-top"
-                  src="{{ course.coursePic }}"
-                  alt="Card image cap"
-                  style="min-height: 150px;"
-                />
+                <img class="card-img-top" src="{{ course.coursePic }}" alt="Card image cap"
+                  style="min-height: 150px;" />
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">{{ course.courseTitle }}</h4>
                   <p class="card-text">
@@ -269,13 +207,7 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button
-        mat-button
-        disableRipple
-        href="#multi-item-courses"
-        data-slide="next"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-courses" data-slide="next" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
@@ -284,16 +216,11 @@
 
 <!--course lg screen-->
 <div class="container d-none d-lg-block d-xl-none">
-  <h2 style="padding: 3% 0;">คอร์ส</h2>
+  <h2 style="padding-top: 3%;">คอร์ส</h2>
   <div class="row flex-row flex-nowrap" style="overflow-x: auto;">
     <div class="col-3" *ngFor="let course of allCourses">
       <div class="card h-100">
-        <img
-          class="card-img-top"
-          src="{{ course.coursePic }}"
-          alt="Card image cap"
-          style="min-height: 150px;"
-        />
+        <img class="card-img-top" src="{{ course.coursePic }}" alt="Card image cap" style="min-height: 150px;" />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{ course.courseTitle }}</h4>
           <p class="mt-auto card-text">
@@ -308,16 +235,11 @@
 
 <!--course under lg-->
 <div class="container d-lg-none d-xl-none">
-  <h2 style="padding: 3% 0;">คอร์ส</h2>
+  <h2 style="padding: 5% 0 3%;">คอร์ส</h2>
   <div class="row flex-row flex-nowrap" style="overflow-x: auto;">
     <div class="col-6" *ngFor="let course of allCourses">
       <div class="card h-100">
-        <img
-          class="card-img-top"
-          src="{{ course.coursePic }}"
-          alt="Card image cap"
-          style="min-height: 150px;"
-        />
+        <img class="card-img-top" src="{{ course.coursePic }}" alt="Card image cap" style="min-height: 150px;" />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{ course.courseTitle }}</h4>
           <p class="mt-auto card-text">
@@ -331,23 +253,20 @@
 </div>
 
 <!--journal-->
-
-<div
-  id="multi-item-journal"
-  class="d-none d-xl-block carousel slide carousel-multi-item controls-top"
-  data-ride="carousel"
-  *ngIf="allJournal"
->
+<div class="container-fulid d-none d-xl-block" *ngIf="allJournal">
+  <div class="row">
+    <div class="offset-1 col-10">
+      <h2 style="padding-top: 3%;">บทความ</h2>
+      <a class="more" style="float: right;" href="/">เพิ่มเติม</a>
+    </div>
+  </div>
+</div>
+<div id="multi-item-journal" class="d-none d-xl-block carousel slide carousel-multi-item controls-top"
+  data-ride="carousel" *ngIf="allJournal" style="margin-bottom: 30px;">
   <div class="row">
     <!--Controls-->
     <div class="col-1">
-      <button
-        mat-button
-        disableRipple
-        href="#multi-item-journal"
-        data-slide="prev"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-journal" data-slide="prev" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-left"></i>
       </button>
     </div>
@@ -355,20 +274,14 @@
 
     <!--Slides-->
     <div class="col-10">
-      <h2 style="padding: 3% 0;">บทความ</h2>
-      <a class="more" style="float: right;" href="/">เพิ่มเติม</a>
+
       <div class="carousel-inner" role="listbox">
         <!--First slide-->
         <div class="carousel-item active">
           <div class="row">
             <div class="col-md-2" *ngFor="let journal of allJournal">
               <div class="card h-100">
-                <img
-                  class="card-img-top"
-                  src="{{ journal.journalPic }}"
-                  alt="Card image cap"
-                  style="height: 150px;"
-                />
+                <img class="card-img-top" src="{{ journal.journalPic }}" alt="Card image cap" style="height: 150px;" />
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">{{ journal.journalTitle }}</h4>
                   <p class="card-text">
@@ -387,12 +300,7 @@
           <div class="row">
             <div class="col-md-2" *ngFor="let journal of allJournal">
               <div class="card h-100">
-                <img
-                  class="card-img-top"
-                  src="{{ journal.journalPic }}"
-                  alt="Card image cap"
-                  style="height: 150px;"
-                />
+                <img class="card-img-top" src="{{ journal.journalPic }}" alt="Card image cap" style="height: 150px;" />
                 <div class="card-body d-flex flex-column">
                   <h4 class="card-title">{{ journal.journalTitle }}</h4>
                   <p class="card-text">
@@ -410,13 +318,7 @@
     </div>
     <!--/.Carousel Wrapper-->
     <div class="col-1">
-      <button
-        mat-button
-        disableRipple
-        href="#multi-item-journal"
-        data-slide="next"
-        style="height: 100%; width: 100%;"
-      >
+      <button mat-button disableRipple href="#multi-item-journal" data-slide="next" style="height: 100%; width: 100%;">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
@@ -425,16 +327,11 @@
 
 <!--journal lg screen-->
 <div class="container d-none d-lg-block d-xl-none">
-  <h2 style="padding: 3% 0;">บทความ</h2>
+  <h2 style="padding-top: 3%;">บทความ</h2>
   <div class="row flex-row flex-nowrap" style="overflow-x: auto;">
     <div class="col-3" *ngFor="let journal of allJournal">
       <div class="card h-100">
-        <img
-          class="card-img-top"
-          src="{{ journal.journalPic }}"
-          alt="Card image cap"
-          style="height: 150px;"
-        />
+        <img class="card-img-top" src="{{ journal.journalPic }}" alt="Card image cap" style="height: 150px;" />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{ journal.journalTitle }}</h4>
           <p class="card-text">
@@ -449,16 +346,11 @@
 
 <!--journal under lg-->
 <div class="container d-lg-none d-xl-none">
-  <h2 style="padding: 3% 0;">บทความ</h2>
+  <h2 style="padding: 5% 0 3%;">บทความ</h2>
   <div class="row flex-row flex-nowrap" style="overflow-x: auto;">
     <div class="col-6" *ngFor="let journal of allJournal">
       <div class="card h-100">
-        <img
-          class="card-img-top"
-          src="{{ journal.journalPic }}"
-          alt="Card image cap"
-          style="height: 150px;"
-        />
+        <img class="card-img-top" src="{{ journal.journalPic }}" alt="Card image cap" style="height: 150px;" />
         <div class="card-body d-flex flex-column">
           <h4 class="card-title">{{ journal.journalTitle }}</h4>
           <p class="card-text">

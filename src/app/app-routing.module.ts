@@ -12,12 +12,16 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { MenuComponent } from './admin/menu/menu.component';
 import { ActivityScheduleComponent } from './admin/activity-schedule/activity-schedule.component';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
-import { JournalComponent } from './journal/journal.component';
 import { JournalsComponent } from './journals/journals.component';
+import { JournalComponent } from './journals/journal/journal.component';
 import { NewsComponent } from './news/news.component';
 import { CoursesManagementComponent } from './admin/courses-management/courses-management.component';
 import { JournalsManagementComponent } from './admin/journals-management/journals-management.component';
-import { ForumsManagementComponent } from './admin/forums-management/forums-management.component';
+import { WebboardsManagementComponent } from './admin/webboards-management/webboards-management.component';
+import { WebboardsComponent } from './webboards/webboards.component';
+import { ResearchComponent } from './admin/research/research.component';
+import { SystemReportComponent } from './admin/system-report/system-report.component';
+import { TrackingComponent } from './admin/tracking/tracking.component';
 
 
 const routes: Routes = [
@@ -66,8 +70,17 @@ const routes: Routes = [
     path: 'admin/journals-management',
     component: JournalsManagementComponent
   }, {
-    path: 'admin/forums-management',
-    component: ForumsManagementComponent
+    path: 'admin/webboards-management',
+    component: WebboardsManagementComponent
+  }, {
+    path: 'admin/research',
+    component: ResearchComponent
+  }, {
+    path: 'admin/system-report',
+    component: SystemReportComponent
+  }, {
+    path: 'admin/tracking',
+    component: TrackingComponent
   }, {
     path: 'journal',
     component: JournalComponent
@@ -77,6 +90,9 @@ const routes: Routes = [
   }, {
     path: 'news',
     component: NewsComponent
+  }, {
+    path: 'webboards',
+    component: WebboardsComponent
   }
 ];
 

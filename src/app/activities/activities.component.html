@@ -9,7 +9,7 @@
             <h3 class="text-center" style="color: white;">กิจกรรมแนะนำ</h3>
             <div style="max-height: 70vh; overflow-y: auto;">
               <mat-card *ngFor="let e of events" style="margin: 15px 10px; border-radius: 10px;">
-                <mat-card-title align="center" class="maincolor">{{e.title}} ({{e.price}}฿)</mat-card-title>
+                <mat-card-title align="center" class="maincolor"><h5>{{e.title}} ({{e.price|number}}฿)</h5></mat-card-title>
                 <mat-card-content>{{e.start}} - {{e.end}}</mat-card-content>
               </mat-card>
             </div>

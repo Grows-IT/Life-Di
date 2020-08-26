@@ -36,26 +36,31 @@ ngb-carousel:focus {
   border-radius: 20px;
   border: 3px solid white;
 }
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  // border-radius: 0.25rem;
+  box-shadow: none;
+}
 
-/* this stuff below doesn't
-   affect scrollbar styling */
-html {
-  background: lightgrey;
-  overflow: hidden;
-}
-body {
-  height: 100vh;
-  background: whitesmoke;
-  overflow-y: auto;
-  max-width: 310px;
-  margin: 0 auto;
-  padding: 2rem;
-  font: 100%/1.4 serif;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-}
-p {
-  margin: 0 0 1.5em;
-}
-* {
-  box-sizing: border-box;
-}
+// /* this stuff below doesn't
+//    affect scrollbar styling */
+// html {
+//   background: lightgrey;
+//   overflow: hidden;
+// }
+// body {
+//   height: 100vh;
+//   background: whitesmoke;
+//   overflow-y: auto;
+//   max-width: 310px;
+//   margin: 0 auto;
+//   padding: 2rem;
+//   font: 100%/1.4 serif;
+//   border: 1px solid rgba(0, 0, 0, 0.25);
+// }
+// p {
+//   margin: 0 0 1.5em;
+// }
+// * {
+//   box-sizing: border-box;
+// }

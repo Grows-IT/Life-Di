@@ -23,22 +23,23 @@
           ค้นหา
         </button> -->
       </form>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item iconMobile" *ngIf="user">
+      <ul class="navbar-nav ml-auto" *ngIf="user">
+        <li class="nav-item iconMobile">
           <a class="nav-link disabled">สวัสดีคุณ {{ user.firstName }}</a>
           <a class="nav-link" href="/profile">ข้อมูลส่วนตัว</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/courses">คอร์สเรียน</a>
+        <li class="nav-item" [ngClass]="{'active': '/courses' === path}">
+          <a class="nav-link" [ngStyle]="{'font-weight': '/courses' === path ? 'bold' : ''}"
+            href="/courses">คอร์สเรียน</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/journals">บทความ</a>
+        <li class="nav-item" [ngClass]="{'active': '/journals' === path}">
+          <a class="nav-link" [ngStyle]="{'font-weight': '/journals' === path ? 'bold' : ''}" href="/journals">บทความ</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/activity">ตารางกิจกรรม</a>
+        <li class="nav-item" [ngClass]="{'active': '/activity' === path}">
+          <a class="nav-link" [ngStyle]="{'font-weight': '/activity' === path ? 'bold' : ''}" href="/activity">ตารางกิจกรรม</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">กระทู้</a>
+        <li class="nav-item" [ngClass]="{'active': '/webboards' === path}">
+          <a class="nav-link" [ngStyle]="{'font-weight': '/webboards' === path ? 'bold' : ''}" href="/webboards">กระทู้</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/#">
@@ -54,8 +55,8 @@
         </li>
       </ul>
     </div>
-    <div ngbDropdown class="d-inline-block iconDesktop">
-      <ul class="navbar-nav ml-auto" *ngIf="user">
+    <div ngbDropdown class="d-inline-block iconDesktop" *ngIf="user">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
           <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
             <img src="assets/icon/person.png" height="30px" />

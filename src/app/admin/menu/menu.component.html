@@ -1,41 +1,33 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
-<section class="strips">
-  <article class="strips__strip">
-    <a [routerLink]="['/admin/user-management']">
-      <div class="d-none d-md-block d-lg-none" style="margin-top: 76px;"></div>
-      <div class="strip__content">
-        <h1 class="strip__title">จัดการสมาชิก</h1>
-      </div>
-    </a>
-  </article>
-  <article class=" strips__strip">
-    <a [routerLink]="['/admin/courses-management']">
-      <div class="strip__content">
-        <h1 class="strip__title">จัดการคอร์ส</h1>
-      </div>
-    </a>
-  </article>
-  <article class="strips__strip">
-    <a [routerLink]="['/admin/activity-schedule']">
-      <div class="strip__content">
-        <h1 class="strip__title">จัดการตารางกิจกรรม</h1>
-      </div>
-    </a>
-  </article>
-  <article class="strips__strip">
-    <a [routerLink]="['/admin/journals-management']">
-      <div class="strip__content">
-        <h1 class="strip__title">จัดการบทความ, ข่าว</h1>
-      </div>
-    </a>
-  </article>
-  <article class="strips__strip">
-    <a [routerLink]="['/admin/forums-management']">
-      <div class="strip__content">
-        <h1 class="strip__title">กระทู้</h1>
-      </div>
-    </a>
-  </article>
-  <i class="fa fa-close strip__close"></i>
-</section>
+<div class="container-fulid text-center" style="margin-top: 76px; overflow: hidden;">
+  <div class="row" style="height: 44.8vh;">
+    <div class="col-3 d-flex menuTop" style="background-color: #ab6db9;" [routerLink]="['/admin/user-management']">
+      <span class="align-self-center">จัดการสมาชิก</span>
+    </div>
+    <div class="col-3 d-flex menuTop" style="background-color: #f695a3;" [routerLink]="['/admin/courses-management']">
+      <span class="align-self-center">จัดการคอร์ส</span>
+    </div>
+    <div class="col-3 d-flex menuTop" style="background-color: #f99775;" [routerLink]="['/admin/activity-schedule']">
+      <span class="align-self-center">จัดการตารางกิจกรรม</span>
+    </div>
+    <div class="col-3 d-flex menuTop" style="background-color: #f9e47a;" [routerLink]="['/admin/journals-management']">
+      <span class="align-self-center">จัดการบทความ, ข่าว</span>
+    </div>
+  </div>
+  <div class="row" style="height: 45vh;">
+    <div class="col-3 d-flex menuDown" style="background-color: #51c0d8;"
+      [routerLink]="['/admin/webboards-management']">
+      <span class="align-self-center">จัดการกระทู้</span>
+    </div>
+    <div class="col-3 d-flex menuDown" style="background-color: #b2d878;" [routerLink]="['/admin/research']">
+      <span class="align-self-center">วิจัย</span>
+    </div>
+    <div class="col-3 d-flex menuDown" style="background-color: #a3adb3;" [routerLink]="['/admin/tracking']">
+      <span class="align-self-center">ติดตามพฤติกรรม</span>
+    </div>
+    <div class="col-3 d-flex menuDown" style="background-color: #87a7ee;" [routerLink]="['/admin/system-report']">
+      <span class="align-self-center">รายงานระบบ</span>
+    </div>
+  </div>
+</div>

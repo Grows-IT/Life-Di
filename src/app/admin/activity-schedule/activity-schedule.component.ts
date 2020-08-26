@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { CalendarEvent, CalendarView, CalendarEventTimesChangedEvent, CalendarEventAction } from 'angular-calendar';
 import { SocialUser } from 'angularx-social-login';
 import { startOfDay, endOfDay, isSameMonth, isSameDay } from 'date-fns';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-activity-schedule',
@@ -13,13 +14,15 @@ import { startOfDay, endOfDay, isSameMonth, isSameDay } from 'date-fns';
   styleUrls: ['./activity-schedule.component.scss']
 })
 export class ActivityScheduleComponent implements OnInit {
-  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+  @ViewChild('modalAddEvent', { static: true }) modalAddEvent: TemplateRef<any>;
+  @ViewChild('modalDetail', { static: true }) modalDetail: TemplateRef<any>;
   user: SocialUser;
   isIncoming: boolean;
-
+  activityForm: FormGroup;
+  modalRef;
   // CalendarEvent อาจจะต้อง custom ให้เข้ากับโปรเจค
-  incomingActivity: CalendarEvent[];
-  passedActivity: CalendarEvent[];
+  incomingActivity: any[];
+  passedActivity: any[];
 
   // tslint:disable-next-line: member-ordering
   view: CalendarView = CalendarView.Month;
@@ -32,48 +35,30 @@ export class ActivityScheduleComponent implements OnInit {
 
   // tslint:disable-next-line: member-ordering
   modalData: {
-    action: string;
     event: CalendarEvent;
   };
-
-  // tslint:disable-next-line: member-ordering
-  incomingActivityActions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.incomingActivity = this.incomingActivity.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
-
-  passedActivityActions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.passedActivity = this.passedActivity.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
 
   // tslint:disable-next-line: member-ordering
   refresh: Subject<any> = new Subject();
 
   // CalendarEvent อาจจะต้อง custom ให้เข้ากับโปรเจค
+  // tslint:disable-next-line: member-ordering
   events: CalendarEvent[];
 
   activeDayIsOpen = true;
-  constructor(private modal: NgbModal, private activitiesService: ActivitiesService, private authService: AuthService) { }
+
+  // tslint:disable-next-line: max-line-length
+  constructor(private modal: NgbModal, private activitiesService: ActivitiesService, private authService: AuthService, private formBuilder: FormBuilder) {
+    this.activityForm = this.formBuilder.group({
+      activityTitle: ['', Validators.required],
+      activityStart: ['', Validators.required],
+      activityEnd: ['', Validators.required],
+      registerStart: ['', Validators.required],
+      registerEnd: ['', Validators.required],
+      activityDetail: ['', Validators.required],
+      activityPrice: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.isIncoming = true;
@@ -96,6 +81,8 @@ export class ActivityScheduleComponent implements OnInit {
           const event = e[i];
           event.start = new Date(event.start);
           event.end = new Date(event.end);
+          event.preStart = new Date(event.preStart);
+          event.preEnd = new Date(event.preEnd);
           console.log(event.start.getTime());
           if (event.end.getTime() > new Date().getTime()) {
             console.log('a');
@@ -118,6 +105,36 @@ export class ActivityScheduleComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: member-ordering
+  incomingActivityActions: CalendarEventAction[] = [
+    {
+      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
+      a11yLabel: 'Edit',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        // this.handleEvent('Edited', event);
+      },
+    },
+    {
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.incomingActivity = this.incomingActivity.filter((iEvent) => iEvent !== event);
+        // this.handleEvent('Deleted', event);
+      },
+    },
+  ];
+
+  // tslint:disable-next-line: member-ordering
+  passedActivityActions: CalendarEventAction[] = [
+    {
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.passedActivity = this.passedActivity.filter((iEvent) => iEvent !== event);
+        // this.handleEvent('Deleted', event);
+      },
+    },
+  ];
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       if (
@@ -143,41 +160,44 @@ export class ActivityScheduleComponent implements OnInit {
       }
       return iEvent;
     });
-    this.handleEvent('Dropped or resized', event);
+    this.handleDetail(event);
   }
 
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg', scrollable: true, centered: true });
+  handleDetail(event: CalendarEvent): void {
+    this.modalData = { event };
+    this.modal.open(this.modalDetail, { size: 'lg', scrollable: true, centered: true, backdrop: 'static' });
   }
 
   addEvent(): void {
-    this.incomingActivity = [
-      ...this.incomingActivity,
-      {
-        title: '',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: {
-          primary: '#001400',
-          secondary: '#FDF1BA',
-        },
-        draggable: false,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
+    // this.activityForm.reset();
+    this.modalData = null;
+    this.modalRef = this.modal.open(this.modalAddEvent, { size: 'lg', scrollable: true, centered: true, backdrop: 'static' });
+    // this.incomingActivity = [
+    //   ...this.incomingActivity,
+    //   {
+    //     title: '',
+    //     start: startOfDay(new Date()),
+    //     end: endOfDay(new Date()),
+    //     color: {
+    //       primary: '#001400',
+    //       secondary: '#FDF1BA',
+    //     },
+    //     draggable: false,
+    //     resizable: {
+    //       beforeStart: true,
+    //       afterEnd: true,
+    //     },
+    //   },
+    // ];
   }
 
-  deleteIncomingEvent(eventToDelete: CalendarEvent) {
-    this.incomingActivity = this.incomingActivity.filter((event) => event !== eventToDelete);
-  }
+  // deleteIncomingEvent(eventToDelete: CalendarEvent) {
+  //   this.incomingActivity = this.incomingActivity.filter((event) => event !== eventToDelete);
+  // }
 
-  deletePassedEvent(eventToDelete: CalendarEvent) {
-    this.passedActivity = this.passedActivity.filter((event) => event !== eventToDelete);
-  }
+  // deletePassedEvent(eventToDelete: CalendarEvent) {
+  //   this.passedActivity = this.passedActivity.filter((event) => event !== eventToDelete);
+  // }
 
   setView(view: CalendarView) {
     this.view = view;
@@ -204,6 +224,31 @@ export class ActivityScheduleComponent implements OnInit {
 
   passed() {
     this.isIncoming = false;
+  }
+
+  confirm(val) {
+    this.incomingActivity = [
+      ...this.incomingActivity,
+      {
+        title: val.activityTitle,
+        start: val.activityStart,
+        end: val.activityEnd,
+        preStart: val.activityStart,
+        preEnd: val.activityEnd,
+        price: val.activityPrice,
+        detail: val.activityDetail,
+        color: {
+          primary: '#001400',
+          secondary: '#FDF1BA',
+        },
+        draggable: false,
+        resizable: {
+          beforeStart: true,
+          afterEnd: true,
+        },
+      },
+    ];
+    this.modalRef.close();
   }
 
 }

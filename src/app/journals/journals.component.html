@@ -1,14 +1,14 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
-<div class="container" *ngIf="allJournal" style="margin-top: 100px;">
-  <h2 class="text-center" style="padding: 50px;">บทความ</h2>
+<div class="container" *ngIf="allJournal" style="margin-top: 76px;">
+  <h2 class="text-center" style="padding: 30px 0px 20px;">บทความ</h2>
   <div class="row">
     <div id="cardJournal" class="col-lg-3 col-md-4 col-sm-6" *ngFor="let journals of allJournal">
       <a [routerLink]="['/journal']">
         <div class="card h-100">
-          <h5 class="card-title text-center">{{ journals.journalTitle }}</h5>
-          <img class="card-img-top" src="{{ journals.journalPic }}" style="height: 15vw; border-radius: 20%;" />
+          <img class="card-img-top" src="{{ journals.journalPic }}" style="height: 15vw;" />
           <div class="card-body">
+            <h5 class="card-title text-center">{{ journals.journalTitle }}</h5>
             <p class="card-text text-center">
               {{ journals.journalInfo }}
             </p>

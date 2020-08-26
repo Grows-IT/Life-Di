@@ -1,7 +1,7 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
 <div class="container" style="margin-top: 76px; padding: 0 30px;" *ngIf="course">
-  <div class="row" style="padding: 40px 0;">
+  <div class="row" style="padding: 30px 0;">
     <div class="col-12">
       <div class="row">
         <h3>{{course.courseTitle}}</h3>
@@ -111,7 +111,9 @@
                 <div class="card-body">
                   <h5 class="card-title">{{review.title}}</h5>
                   <p class="card-text">{{review.comment}}</p>
-                  <p class="card-text"><small class="text-muted">{{review.date}}</small></p>
+                  <p class="card-text">{{review.userName}}
+                    <small class="text-muted" style="float: right;">{{review.date}}</small>
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,7 +197,7 @@
       <ngb-tab title="รีวิว">
         <ng-template ngbTabContent>
           <div class="container-fluid">
-            <div class="row"  style="padding: 15px 0;">
+            <div class="row" style="padding: 15px 0;">
               <div>
                 <ng-template #t let-fill="fill">
                   <span class="star">
@@ -213,7 +215,9 @@
                 <div class="card-body">
                   <h5 class="card-title">{{review.title}}</h5>
                   <p class="card-text">{{review.comment}}</p>
-                  <p class="card-text"><small class="text-muted">{{review.date}}</small></p>
+                  <p class="card-text">{{review.userName}}
+                    <small class="text-muted" style="float: right;">{{review.date}}</small>
+                  </p>
                 </div>
               </div>
             </div>

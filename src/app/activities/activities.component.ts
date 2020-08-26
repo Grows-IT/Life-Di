@@ -100,7 +100,6 @@ export class ActivitiesComponent implements OnInit {
         }
         this.events = allEvent;
         console.log(this.events);
-
       }
     });
   }

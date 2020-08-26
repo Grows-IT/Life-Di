@@ -11,9 +11,16 @@
     outline: none !important;
   }
 }
-// .navbar {
-//   padding: 0px;
-// }
+
+a.nav-link {
+  font-weight: 400;
+}
+.active {
+  > a.nav-link {
+    color: #5c5c5c !important;
+    background-color: unset !important;
+  }
+}
 
 @media screen and (min-width: 992px) {
   .iconDesktop {

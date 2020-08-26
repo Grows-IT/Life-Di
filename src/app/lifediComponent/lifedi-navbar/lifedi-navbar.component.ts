@@ -9,6 +9,7 @@ import { SocialUser } from 'angularx-social-login';
 })
 export class LifediNavbarComponent implements OnInit {
   user: SocialUser;
+  path: string;
 
   constructor(private authService: AuthService) { }
 
@@ -19,6 +20,10 @@ export class LifediNavbarComponent implements OnInit {
         this.user = JSON.parse(user);
       }
     });
+    this.path = window.location.pathname;
+    console.log(this.path);
+
+
   }
 
   signout() {

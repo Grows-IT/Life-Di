@@ -28,13 +28,25 @@
       <div [ngSwitch]="view">
         <mwl-calendar-month-view id="adminActivity" *ngIf="isIncoming" [viewDate]="viewDate" [events]="incomingActivity"
           [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
-          (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+          (eventClicked)="handleDetail($event.event)" (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
 
         <mwl-calendar-month-view id="adminActivity" *ngIf="!isIncoming" [viewDate]="viewDate" [events]="passedActivity"
           [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
-          (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+          (eventClicked)="handleDetail($event.event)" (eventTimesChanged)="eventTimesChanged($event)">
         </mwl-calendar-month-view>
+      </div>
+      <br>
+      <div class="row col-12">
+        <span
+          style="background-color: rgb(75, 181, 67); width: 8px; height: 8px; border-radius: 50px; margin-top: 9px;"></span>
+        &nbsp; = ลงทะเบียนแล้ว &nbsp;
+        <span
+          style="background-color: rgb(42, 157, 244); width: 8px; height: 8px; border-radius: 50px; margin-top: 9px;"></span>
+        &nbsp; = คอร์สใหม่ &nbsp;
+        <span
+          style="background-color: rgb(255, 0, 0); width: 8px; height: 8px; border-radius: 50px; margin-top: 9px;"></span>
+        &nbsp; = คอร์สเต็ม &nbsp;
       </div>
     </div>
     <div class="col-xl-9 col-lg-8 col-md-12">
@@ -54,9 +66,9 @@
           <button class="btn btn-primary float-right" (click)="addEvent()">
             เพิ่มกิจกรรม
           </button>
-          <button class="btn btn-success float-right">
+          <!-- <button class="btn btn-success float-right">
             บันทึก
-          </button>
+          </button> -->
         </div>
       </div>
       <div class="row">
@@ -87,51 +99,46 @@
             <thead>
               <tr>
                 <th>ชื่อกิจกรรม</th>
-                <th>รายละเอียด</th>
-                <th>ราคา</th>
-                <th>วันเริ่มการลงทะเบียน</th>
-                <th>วันสิ้นสุดการลงทะเบียน</th>
                 <th>วันเริ่มกิจกรรม</th>
                 <th>วันสิ้นสุดกิจกรรม</th>
-                <th>Remove</th>
+                <th>วันเริ่มการลงทะเบียน</th>
+                <th>วันสิ้นสุดการลงทะเบียน</th>
+                <th>รายละเอียด</th>
+                <th>จำนวนผู้ที่ลงทะเบียน</th>
+                <th>ราคา</th>
+                <th>จัดการ</th>
               </tr>
             </thead>
-
             <tbody>
-              <tr *ngFor="let event of incomingActivity">
+              <tr *ngFor="let activity of incomingActivity">
                 <td>
-                  <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()"
-                    placeholder="ชื่อกิจกรรม" />
+                  {{activity.title}}
                 </td>
                 <td>
-                  <input type="text" class="form-control" placeholder="รายละเอียดกิจกรรม">
+                  {{activity.start|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input type="text" class="form-control" placeholder="ราคา">
-
+                  {{activity.end|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันลงทะเบียน" />
+                  {{activity.preStart|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันสิ้นสุดการลงทะเบียน" />
+                  {{activity.preEnd|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
-                    (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันเริ่มกิจกรรม" />
+                  {{activity.detail}}
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
-                    (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันสิ้นสุดกิจกรรม" />
+                  {{activity.registeredUser}}/{{activity.maximumUser}}
                 </td>
                 <td>
-                  <button class="btn btn-danger" (click)="deleteIncomingEvent(event)">
-                    Delete
-                  </button>
+                  {{activity.price}} ฿
+                </td>
+                <td>
+                  <a mat-icon-button (click)="handleDetail(activity)">
+                    <mat-icon>create</mat-icon>
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -145,51 +152,46 @@
             <thead>
               <tr>
                 <th>ชื่อกิจกรรม</th>
-                <th>รายละเอียด</th>
-                <th>ราคา</th>
-                <th>วันเริ่มการลงทะเบียน</th>
-                <th>วันสิ้นสุดการลงทะเบียน</th>
                 <th>วันเริ่มกิจกรรม</th>
                 <th>วันสิ้นสุดกิจกรรม</th>
-                <th>Remove</th>
+                <th>วันเริ่มการลงทะเบียน</th>
+                <th>วันสิ้นสุดการลงทะเบียน</th>
+                <th>รายละเอียด</th>
+                <th>จำนวนผู้ที่ลงทะเบียน</th>
+                <th>ราคา</th>
+                <th>จัดการ</th>
               </tr>
             </thead>
-
             <tbody>
-              <tr *ngFor="let event of passedActivity">
+              <tr *ngFor="let activity of passedActivity">
                 <td>
-                  <input type="text" class="form-control" [(ngModel)]="event.title" (keyup)="refresh.next()"
-                    placeholder="ชื่อกิจกรรม" />
+                  {{activity.title}}
                 </td>
                 <td>
-                  <input type="text" class="form-control" placeholder="รายละเอียดกิจกรรม">
+                  {{activity.start|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input type="text" class="form-control" placeholder="ราคา">
-
+                  {{activity.end|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันลงทะเบียน" />
+                  {{activity.preStart|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันสิ้นสุดการลงทะเบียน" />
+                  {{activity.preEnd|date:'d MMMM yyyy : HH:mm'}} น.
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.start"
-                    (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันเริ่มกิจกรรม" />
+                  {{activity.detail}}
                 </td>
                 <td>
-                  <input class="form-control" type="text" mwlFlatpickr [(ngModel)]="event.end"
-                    (ngModelChange)="refresh.next()" [altInput]="true" [convertModelValue]="true" [enableTime]="true"
-                    dateFormat="Y-m-dTH:i" altFormat="F j, Y H:i" placeholder="เลือกวันสิ้นสุดกิจกรรม" />
+                  {{activity.registeredUser}}/{{activity.maximumUser}}
                 </td>
                 <td>
-                  <button class="btn btn-danger" (click)="deletePassedEvent(event)">
-                    Delete
-                  </button>
+                  {{activity.price}} ฿
+                </td>
+                <td>
+                  <a mat-icon-button (click)="handleDetail(activity)">
+                    <mat-icon>create</mat-icon>
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -200,27 +202,96 @@
   </div>
 </div>
 
-<ng-template #modalContent let-close="close">
+<ng-template #modalAddEvent let-close="close">
   <div class="modal-header">
-    <h5 class="modal-title">กิจกรรม {{modalData?.event.title}}</h5>
-    <button type="button" class="close" (click)="close()">
+    <h5 class="modal-title">จัดการคอร์สเรียน</h5>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    ราคา : {{modalData?.event.price}} ฿<br>
-    สถานะ : {{getStatus(modalData?.event.end)}} <br>
-    สถานที่ : ?? <br>
-    วัน-เวลา : {{modalData?.event.start.getTime() | date: 'medium'}} -
-    {{modalData?.event.end.getTime() | date: 'medium'}}<br>
-    <div>
-      Event:
-      <pre>{{ modalData?.event | json }}</pre>
-    </div>
+    <form [formGroup]="activityForm">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="activityTitle">ชื่อกิจกรรม</label>
+          <input id="activityTitle" type="text" class="form-control" (keyup)="refresh.next()" placeholder="ชื่อกิจกรรม"
+            formControlName="activityTitle" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="activityStart">เลือกวันเริ่มกิจกรรม</label>
+          <input id="activityStart" class="form-control" type="text" mwlFlatpickr (ngModelChange)="refresh.next()"
+            [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i"
+            altFormat="j F Y, H:i" placeholder="เลือกวันเริ่มกิจกรรม" formControlName="activityStart" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="activityEnd">วันสิ้นสุดกิจกรรม</label>
+          <input id="activityEnd" class="form-control" type="text" mwlFlatpickr (ngModelChange)="refresh.next()"
+            [altInput]="true" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i"
+            altFormat="j F Y, H:i" placeholder="เลือกวันสิ้นสุดกิจกรรม" formControlName="activityEnd" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="registerStart">วันเรื่มลงทะเบียน</label>
+          <input class="registerStart" class="form-control" type="text" mwlFlatpickr [altInput]="true"
+            (ngModelChange)="refresh.next()" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i"
+            altFormat="j F Y, H:i" placeholder="เลือกวันลงทะเบียน" formControlName="registerStart" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="registerEnd">วันสิ้นสุดการลงทะเบียน</label>
+          <input id="registerEnd" class="form-control" type="text" mwlFlatpickr [altInput]="true"
+            (ngModelChange)="refresh.next()" [convertModelValue]="true" [enableTime]="true" dateFormat="Y-m-dTH:i"
+            altFormat="j F Y, H:i" placeholder="เลือกวันลงทะเบียน" formControlName="registerEnd" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="activityDetail">รายละเอียดกิจกรรม</label>
+          <textarea id="activityDetail" class="form-control" rows="3.5" cols="50" formControlName="activityDetail"
+            placeholder="กรุณากรอกรายละเอียด" formControlName="activityDetail"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="activityPrice">ค่าเข้าร่วมกิจกรรม</label>
+          <input type="text" class="form-control" id="activityPrice" placeholder="ราคา" formControlName="activityPrice">
+        </div>
+      </div>
+      <!-- <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">City</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inputState">State</label>
+          <input type="text" class="form-control" />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+      </div> -->
+      <!-- <button class="btn btn-primary">ยืนยันการแก้ไข</button> -->
+      <button class="btn btn-primary" (click)="confirm(activityForm.value)"
+        [disabled]="!activityForm.valid">สร้าง</button>
+    </form>
+    <!-- <pre>
+    {{modalData?.course|json}}
+    </pre> -->
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="close()">
-      OK
+</ng-template>
+
+
+<ng-template #modalDetail let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">จัดการคอร์สเรียน</h5>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
     </button>
+  </div>
+  <div class="modal-body">
+    <pre>
+    {{modalData?.event|json}}
+    </pre>
   </div>
 </ng-template>

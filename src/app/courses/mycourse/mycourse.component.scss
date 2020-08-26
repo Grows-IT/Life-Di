@@ -27,10 +27,6 @@ h2 {
     outline-color: #dd598c;
     color: #2c4975;
   }
-  // :focus {
-  //   outline-color: #dd598c;
-  //   color: #2c4975;
-  // }
   :active {
     background-color: #feeef4;
     outline-color: #dd598c;
@@ -39,23 +35,10 @@ h2 {
 }
 
 .card {
-  border-radius: 30px;
-  border: 0;
   box-shadow: none !important;
-  background-color: #feeef4;
-
-  .card-img-top {
-    padding: 0 35px;
-  }
 
   .card-title {
     color: #2c4975;
-    padding-top: 20px;
-    padding-bottom: 15px;
-  }
-
-  .card-body > .card-text {
-    color: #dd598c;
   }
 
   .card-footer {

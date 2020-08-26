@@ -1,0 +1,98 @@
+<app-lifedi-navbar></app-lifedi-navbar>
+
+<div class="container" style="margin-top: 76px;">
+  <h1 class="text-center" style="padding-top: 30px;">รายงาน</h1>
+  <div class="row" style="margin-top: 30px; margin-bottom: 25px;">
+    <div class="col-4 text-center">
+      <div class="card" *ngIf="userData">
+        <div style="padding: 28.5px 0;">
+          <h3>All User</h3>
+          <h1><span style="color: orangered;">{{userData.allUser | number}}</span> คน</h1>
+        </div>
+        <hr width="100%">
+        <div style="padding: 28.5px 0;">
+          <h3>Active User</h3>
+          <h1><span style="color: lightseagreen;">{{userData.active | number}}</span> คน</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-8 text-center">
+      <div class="card" *ngIf="profitData[0]">
+        <h3>รายได้</h3>
+        <canvas mdbChart style="max-height: 300px; height: 300px;" chartType="bar" [datasets]="profitData[0]"
+          [labels]="profitLabel" [colors]="barColors" [options]="barOptions" [legend]="true"
+          (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: 30px;">
+    <div class="col-6 text-center">
+      <div class="card" style="padding: 20px 0 0 0;">
+        <h3>กิจกรรม</h3>
+        <div class="row">
+          <div class="offset-7 col-5">
+            <div ngbDropdown class="d-inline-block" *ngIf="selectMonth1">
+              <button class="btn btn-outline-danger" id="dropdownBasic1" ngbDropdownToggle>{{selectMonth1}}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem *ngFor="let m of profitLabel" (click)="selMonth1(m)">{{m}}</button>
+              </div>
+            </div>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-7">
+            <canvas mdbChart chartType="doughnut" [datasets]="activityData" [labels]="actLabels"
+              [colors]="activityColors" [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+          <div class="col-5">
+            <h5>กิจกรรมยอดนิยม</h5>
+            <div *ngFor="let item of actLabels; let i = index; let last = last" style="text-align: left;">
+              <span *ngIf="!last">{{i+1}}. {{item}}</span><br>
+            </div>
+          </div>
+        </div><br>
+        <div class="card-footer">
+          <h5 class="text-center">ทั้งหมด {{numActivity}} กิจกรรม</h5>
+          <!-- <div class="col-12 text-center">
+              <h5>กิจกรรมทั้งหมด {{numActivity}} กิจกรรม</h5>
+            </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-6 text-center">
+      <div class="card" style="padding: 20px 0 0 0;">
+        <h3>คอร์สเรียน</h3>
+        <div class="row">
+          <div class="offset-7 col-5">
+            <div ngbDropdown class="d-inline-block" *ngIf="selectMonth2">
+              <button class="btn btn-outline-danger" id="dropdownBasic1" ngbDropdownToggle>{{selectMonth2}}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem *ngFor="let m of profitLabel" (click)="selMonth2(m)">{{m}}</button>
+              </div>
+            </div>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-7">
+            <canvas mdbChart chartType="doughnut" [datasets]="courseData" [labels]="courseLabels"
+              [colors]="courseColors" [options]="chartOptions" [legend]="true" (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+          <div class="col-5">
+            <h5>บทเรียนยอดนิยม</h5>
+            <div *ngFor="let item of courseLabels; let i = index; let last = last" style="text-align: left;">
+              <span *ngIf="!last">{{i+1}}. {{item}}</span><br>
+            </div>
+          </div>
+        </div><br>
+        <div class="card-footer" style="padding-top: 25.5px;">
+          <h5 class="text-center">ทั้งหมด {{numCourse}} คอร์ส</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

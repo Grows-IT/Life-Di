@@ -1,7 +1,7 @@
 <app-lifedi-navbar></app-lifedi-navbar>
 
 <div class="container" style="margin-top: 76px;">
-  <h2 class="text-center" style="padding-top: 50px;">คอร์สเรียน</h2>
+  <h2 class="text-center" style="padding-top: 30px;">คอร์สเรียน</h2>
   <div class="row">
     <div class="col text-right">
       <div ngbDropdown class="d-inline-block">
@@ -18,17 +18,17 @@
     <div *ngIf="allCourses">
       <div class="row">
         <div id="cardCourse" class="col-lg-3 col-md-4 col-sm-6" *ngFor="let course of allCourses">
-          <!-- <a [routerLink]="['/course', course.courseId]"> -->
+          <a [routerLink]="['/course', course.courseId]">
             <div class="card h-100">
-              <h5 class="card-title text-center">{{ course.courseTitle }}</h5>
-              <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw; border-radius: 20%;" />
+              <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw;" />
               <div class="card-body">
+                <h6 class="card-title text-center"><b>{{ course.courseTitle }}</b></h6>
                 <p class="card-text text-center">
                   {{ course.courseInfo }}
                 </p>
               </div>
             </div>
-          <!-- </a> -->
+          </a>
         </div>
       </div>
     </div>

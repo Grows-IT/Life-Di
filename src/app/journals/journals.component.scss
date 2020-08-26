@@ -7,25 +7,15 @@ h2 {
   margin-bottom: 15px;
 }
 
+a:hover {
+  text-decoration: none;
+}
 
 .card {
-  border-radius: 30px;
-  border: 0;
   box-shadow: none !important;
-  background-color: #feeef4;
-
-  .card-img-top {
-    padding: 0 35px;
-  }
 
   .card-title {
     color: #2c4975;
-    padding-top: 20px;
-    padding-bottom: 15px;
-  }
-
-  .card-body > .card-text {
-    color: #dd598c;
   }
 
   .card-footer {
@@ -35,3 +25,31 @@ h2 {
     border-top: 0 !important;
   }
 }
+
+// .card {
+//   border-radius: 30px;
+//   border: 0;
+//   box-shadow: none !important;
+//   background-color: #feeef4;
+
+//   .card-img-top {
+//     padding: 0 35px;
+//   }
+
+//   .card-title {
+//     color: #2c4975;
+//     padding-top: 20px;
+//     padding-bottom: 15px;
+//   }
+
+//   .card-body > .card-text {
+//     color: #dd598c;
+//   }
+
+//   .card-footer {
+//     border-radius: 0;
+//     padding: 0.75rem 1.25rem;
+//     background-color: unset;
+//     border-top: 0 !important;
+//   }
+// }

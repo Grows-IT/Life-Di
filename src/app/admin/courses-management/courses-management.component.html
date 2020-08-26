@@ -5,7 +5,7 @@
     <div class="col-12">
       <h3 class="text-center" style="margin: 15px 0;">จัดการคอร์ส
         <button class="btn btn-primary float-right" style="margin: 0" (click)="addCourse()">
-          เพิ่มกิจกรรม
+          เพิ่มคอร์ส
         </button>
       </h3>
 
@@ -116,7 +116,7 @@
 
 <ng-template #modalContent let-close="close" let-d="dismiss">
   <div class="modal-header">
-    <h5 class="modal-title">จัดการผู้ใช้งาน </h5>
+    <h5 class="modal-title">จัดการคอร์สเรียน</h5>
     <button type="button" class="close" aria-label="Close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -126,7 +126,10 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="courseTitle">ชื่อคอร์สเรียน</label>
-          <input type="text" class="form-control" id="courseTitle" placeholder="ชื่อคอร์สเรียน" formControlName="courseTitle" [value]="modalData?.course.courseTitle">
+          <input type="text" class="form-control" id="courseTitle" placeholder="ชื่อคอร์สเรียน"
+            formControlName="courseTitle" *ngIf="modalData?.course" [(ngModel)]="modalData?.course.courseTitle">
+          <input type="text" class="form-control" id="courseTitle" placeholder="ชื่อคอร์สเรียน"
+            formControlName="courseTitle" *ngIf="!modalData?.course">
         </div>
         <!-- <div class="form-group col-md-6">
           <label for="courseInfo">เกี่ยวกับคอร์ส (คำบรรยายสั้นๆ)</label>
@@ -137,7 +140,10 @@
         <div class="form-group col-md-12">
           <label for="courseDetail">รายละเอียดคอร์สเรียน</label>
           <textarea id="courseDetail" class="form-control" rows="3.5" cols="50" formControlName="courseInfo"
-            placeholder="รายละเอียดคอร์สเรียน" [value]="modalData?.course.courseInfo"></textarea>
+            placeholder="รายละเอียดคอร์สเรียน" *ngIf="modalData?.course"
+            [(ngModel)]="modalData?.course.courseInfo"></textarea>
+          <textarea id="courseDetail" class="form-control" rows="3.5" cols="50" formControlName="courseInfo"
+            placeholder="รายละเอียดคอร์สเรียน" *ngIf="!modalData?.course"></textarea>
         </div>
       </div>
       <div class="form-row">
@@ -153,7 +159,10 @@
         </div>
         <div class="form-group col-md-6">
           <label for="coursePic">อัพโหลดรูปหน้าปกคอร์สเรียน</label>
-          <input type="text" class="form-control" id="coursePic" placeholder="อัพโหลดรูปภาพ" formControlName="coursePic" [value]="modalData?.course.coursePic">
+          <input type="text" class="form-control" id="coursePic" placeholder="อัพโหลดรูปภาพ" formControlName="coursePic"
+            *ngIf="modalData?.course" [(ngModel)]="modalData?.course.coursePic">
+          <input type="text" class="form-control" id="coursePic" placeholder="อัพโหลดรูปภาพ" formControlName="coursePic"
+            *ngIf="!modalData?.course">
         </div>
       </div>
       <!-- <div class="form-row">
@@ -170,8 +179,10 @@
           <input type="text" class="form-control" id="inputZip">
         </div>
       </div> -->
-      <button class="btn btn-primary" *ngIf="modalData?.course" (click)="update($event)">ยืนยันการแก้ไข</button>
-      <button class="btn btn-primary" *ngIf="!modalData?.course" (click)="confirm($event)" [disabled]="!courseForm.valid">ยืนยัน</button>
+      <button class="btn btn-primary" *ngIf="modalData?.course"
+        (click)="update(courseForm.value)">ยืนยันการแก้ไข</button>
+      <button class="btn btn-primary" *ngIf="!modalData?.course" (click)="confirm(courseForm.value)"
+        [disabled]="!courseForm.valid">ยืนยัน</button>
     </form>
     <!-- <pre>
     {{modalData?.course|json}}

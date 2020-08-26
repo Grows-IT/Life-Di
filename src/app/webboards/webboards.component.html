@@ -1,0 +1,19 @@
+<app-lifedi-navbar></app-lifedi-navbar>
+
+<div class="container" style="margin-top: 76px;">
+  <h2 class="text-center" style="padding-top: 30px; margin-bottom: 30px;">กระทู้</h2>
+  <button style="float: right; margin-top: -60px;">สร้างกระทู้</button>
+
+  <div class="list-group" *ngFor="let web of webboards" style="margin-bottom: 15px; border: hidden;">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1" style="color: #2c4975">{{web.title}}</h5>
+        <small>{{web.createDate|date:'d MMMM yyyy : HH:mm'}}</small>
+      </div>
+      <hr width="100%">
+      <p class="mb-1">{{web.description}}</p>
+      <small>{{web.createBy}}</small>
+      <small style="float: right;">{{web.comments.length}} ความคิดเห็น</small>
+    </a>
+  </div>
+</div>

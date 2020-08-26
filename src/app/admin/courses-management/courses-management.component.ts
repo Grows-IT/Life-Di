@@ -2,6 +2,8 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CoursesManagementService } from './courses-management.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth/auth.service';
+import { SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-courses-management',
@@ -18,55 +20,27 @@ export class CoursesManagementComponent implements OnInit {
   modalRef;
   courseForm: FormGroup;
 
+  user: SocialUser;
   isCouseOpen: boolean;
   courses: any;
   coursesClose = [];
   coursesOpen = [];
 
-  constructor(private coursesManagementService: CoursesManagementService, private modal: NgbModal, private formBuilder: FormBuilder) {
+  constructor(private coursesManagementService: CoursesManagementService, private authService: AuthService, private modal: NgbModal, private formBuilder: FormBuilder) {
     this.courseForm = this.formBuilder.group({
-      courseId: [this.coursesOpen.length + 1],
+      // courseId: [this.coursesOpen.length + 1],
       coursePic: ['', Validators.required],
       courseTitle: ['', Validators.required],
       courseInfo: ['', Validators.required],
       courseProgress: 0,
-      // courseStart: ['', Validators.required],
-      // courseEnd: ['', Validators.required],
       courseCategory: ['', Validators.required]
     });
-    // this.courseForm = this.formBuilder.group({
-    //   courseId: this.coursesOpen.length + 1,
-    //   coursePic: '',
-    //   courseTitle: '',
-    //   courseInfo: '',
-    //   courseProgress: 0,
-    //   courseStart: '',
-    //   courseEnd: '',
-    //   courseCategory: '',
-    //   courseLesson: [{
-    //     lessonName: '',
-    //     topic: [{
-    //       topicName: ''
-    //     }]W
-    //   }],
-    //   aboutCourse: {
-    //     courseDetail: '',
-    //     // id ผู้สร้าง
-    //     courseBy: {
-    //       name: '',
-    //       description: '',
-    //       profilePic: ''
-    //     },
-    //   },
-    //   courseReview: {
-    //     courseRating: 0,
-    //     courseReviewNumber: 0,
-    //     review: []
-    //   },
-    //   chatCourse: {
-    //     comment: []
-    //   }
-    // });
+
+    this.authService.getUser().subscribe(user => {
+      if (user) {
+        this.user = JSON.parse(user);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -100,22 +74,25 @@ export class CoursesManagementComponent implements OnInit {
   }
 
   addCourse(): void {
+    this.courseForm.reset();
     this.modalData = null;
     this.modalRef = this.modal.open(this.modalContent, { size: 'lg', scrollable: true, centered: true, backdrop: 'static' });
   }
 
   confirm(data): void {
+    console.log(data);
+
     this.coursesOpen = [
       ...this.coursesOpen,
       {
-        courseId: this.coursesOpen.length + 1,
-        coursePic: '',
-        courseTitle: '',
-        courseInfo: '',
+        courseId: this.courses.length + 1,
+        coursePic: data.coursePic,
+        courseTitle: data.courseTitle,
+        courseInfo: data.courseInfo,
         courseProgress: 0,
-        courseStart: '',
-        courseEnd: '',
-        courseCategory: '',
+        createDate: new Date(),
+        // courseEnd: '',
+        courseCategory: data.courseCategory,
         courseLesson: [{
           lessonName: '',
           topic: [{
@@ -126,7 +103,7 @@ export class CoursesManagementComponent implements OnInit {
           courseDetail: '',
           // id ผู้สร้าง
           courseBy: {
-            name: '',
+            name: this.user.name,
             description: '',
             profilePic: ''
           },
@@ -141,12 +118,13 @@ export class CoursesManagementComponent implements OnInit {
         }
       },
     ];
+    console.log(this.coursesOpen);
+
     this.modalRef.close();
   }
 
   update(data): void {
+    // this.coursesOpen
     console.log(data);
-
-
   }
 }
