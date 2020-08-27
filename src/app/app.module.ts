@@ -42,6 +42,7 @@ import { WebboardsComponent } from './webboards/webboards.component';
 import { ResearchComponent } from './admin/research/research.component';
 import { SystemReportComponent } from './admin/system-report/system-report.component';
 import { TrackingComponent } from './admin/tracking/tracking.component';
+import { WebboardComponent } from './webboards/webboard/webboard.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -85,6 +86,7 @@ const NGBComponent = [
     ResearchComponent,
     SystemReportComponent,
     TrackingComponent,
+    WebboardComponent,
   ],
   imports: [
     BrowserModule,
