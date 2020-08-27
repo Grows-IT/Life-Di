@@ -18,7 +18,8 @@
     <div *ngIf="allCourses">
       <div class="row">
         <div id="cardCourse" class="col-lg-3 col-md-4 col-sm-6" *ngFor="let course of allCourses">
-          <a [routerLink]="['/course', course.courseId]">
+          <!-- <a [routerLink]="['/course', course.courseId]"> -->
+            <a [routerLink]="['/course/1']">
             <div class="card h-100">
               <img class="card-img-top" src="{{ course.coursePic }}" style="height: 15vw;" />
               <div class="card-body">

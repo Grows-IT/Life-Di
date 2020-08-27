@@ -44,6 +44,7 @@ import { ResearchComponent } from './admin/research/research.component';
 import { SystemReportComponent } from './admin/system-report/system-report.component';
 import { TrackingComponent } from './admin/tracking/tracking.component';
 import { CartComponent } from './cart/cart.component';
+import { WebboardComponent } from './webboards/webboard/webboard.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -89,6 +90,7 @@ const NGBComponent = [
     SystemReportComponent,
     TrackingComponent,
     CartComponent,
+    WebboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,11 @@ import { WebboardsComponent } from './webboards/webboards.component';
 import { ResearchComponent } from './admin/research/research.component';
 import { SystemReportComponent } from './admin/system-report/system-report.component';
 import { TrackingComponent } from './admin/tracking/tracking.component';
+<<<<<<< HEAD
 import { CartComponent } from './cart/cart.component';
+=======
+import { WebboardComponent } from './webboards/webboard/webboard.component';
+>>>>>>> 979ad63e5a547db65de876f87d81ae79793c212d
 
 
 const routes: Routes = [
@@ -97,6 +101,10 @@ const routes: Routes = [
   }, {
     path: 'cart',
     component: CartComponent
+  }
+  , {
+    path: 'webboards/webboard',
+    component: WebboardComponent
   }
 ];
 
