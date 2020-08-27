@@ -21,9 +21,6 @@ export class LifediNavbarComponent implements OnInit {
       }
     });
     this.path = window.location.pathname;
-    console.log(this.path);
-
-
   }
 
   signout() {

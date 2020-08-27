@@ -1,0 +1,33 @@
+.card {
+  box-shadow: unset !important;
+}
+
+table {
+  margin-bottom: 0;
+}
+
+button {
+  outline: unset;
+}
+
+.table thead th {
+  color: hotpink;
+  font-weight: 500;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table td,
+.table th {
+  border: none;
+}
+
+.card.cardPrice {
+  border-radius: unset;
+  height: 40px;
+  text-align: center;
+  line-height: 2.5;
+}
+
+mat-icon {
+  cursor: pointer;
+}

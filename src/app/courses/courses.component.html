@@ -24,7 +24,8 @@
               <div class="card-body">
                 <h6 class="card-title text-center"><b>{{ course.courseTitle }}</b></h6>
                 <p class="card-text text-center">
-                  {{ course.courseInfo }}
+                  {{ course.courseInfo }} <br>
+                  <span style="color: red; font-weight: 500;">{{ course.price | number }} ฿</span>
                 </p>
               </div>
             </div>

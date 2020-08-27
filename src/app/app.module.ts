@@ -29,6 +29,7 @@ import { JournalsManagementComponent } from './admin/journals-management/journal
 import { WebboardsManagementComponent } from './admin/webboards-management/webboards-management.component';
 
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,6 +43,7 @@ import { WebboardsComponent } from './webboards/webboards.component';
 import { ResearchComponent } from './admin/research/research.component';
 import { SystemReportComponent } from './admin/system-report/system-report.component';
 import { TrackingComponent } from './admin/tracking/tracking.component';
+import { CartComponent } from './cart/cart.component';
 
 const MaterialComponent = [
   MatInputModule,
@@ -54,7 +56,8 @@ const MaterialComponent = [
   WavesModule,
   CardsModule,
   ButtonsModule,
-  ChartsModule
+  ChartsModule,
+  MatCheckboxModule
 ];
 const NGBComponent = [
   NgbModule
@@ -85,6 +88,7 @@ const NGBComponent = [
     ResearchComponent,
     SystemReportComponent,
     TrackingComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
