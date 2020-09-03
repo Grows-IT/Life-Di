@@ -50,7 +50,8 @@
             <th>วันที่หมดอายุ</th> -->
             <th>จำนวนผู้สมัคร</th>
             <th>ห้องสนทนา</th>
-            <th>จัดการ</th>
+            <th>แก้ไขคอร์ส</th>
+            <th>จัดการบทเรียน</th>
           </tr>
         </thead>
         <!-- <tbody *ngIf="isCouseOpen"> -->
@@ -76,6 +77,11 @@
             </td>
             <td>
               ห้องสนทนา
+            </td>
+            <td>
+              <a mat-icon-button (click)="edit(course)">
+                <mat-icon>create</mat-icon>
+              </a>
             </td>
             <td>
               <a mat-icon-button (click)="edit(course)">
