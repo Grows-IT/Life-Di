@@ -11,7 +11,9 @@
     outline: none !important;
   }
 }
-
+#navNotification.dropdown-toggle::after {
+  display: none;
+}
 a.nav-link {
   font-weight: 400;
 }
@@ -82,4 +84,22 @@ li.nav-item {
 
 .search-query:focus + button {
   z-index: 200;
+}
+
+a.notification-box {
+  padding: 15px 30px;
+  min-width: 400px;
+  border-bottom: 1px solid #cacaca;
+
+  :last-child {
+    border-bottom: 0px;
+  }
+}
+
+.dropdown-menu {
+  padding: 0;
+  margin: 0;
+}
+.dropdown .dropdown-menu .dropdown-item:active {
+  background: lightgrey;
 }

@@ -33,18 +33,42 @@
             href="/courses">คอร์สเรียน</a>
         </li>
         <li class="nav-item" [ngClass]="{'active': '/journals' === path}">
-          <a class="nav-link" [ngStyle]="{'font-weight': '/journals' === path ? 'bold' : ''}" href="/journals">บทความ</a>
+          <a class="nav-link" [ngStyle]="{'font-weight': '/journals' === path ? 'bold' : ''}"
+            href="/journals">บทความ</a>
         </li>
         <li class="nav-item" [ngClass]="{'active': '/activity' === path}">
-          <a class="nav-link" [ngStyle]="{'font-weight': '/activity' === path ? 'bold' : ''}" href="/activity">ตารางกิจกรรม</a>
+          <a class="nav-link" [ngStyle]="{'font-weight': '/activity' === path ? 'bold' : ''}"
+            href="/activity">ตารางกิจกรรม</a>
         </li>
         <li class="nav-item" [ngClass]="{'active': '/webboards' === path}">
-          <a class="nav-link" [ngStyle]="{'font-weight': '/webboards' === path ? 'bold' : ''}" href="/webboards">กระทู้</a>
+          <a class="nav-link" [ngStyle]="{'font-weight': '/webboards' === path ? 'bold' : ''}"
+            href="/webboards">กระทู้</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/cart">
-            <img src="assets/icon/shoppingcart.png" height="30px" />
+            <img src="assets/icon/shopping-cart.png" height="25px" />
           </a>
+        </li>
+        <li class="nav-item" ngbDropdown display="dynamic">
+          <a class="nav-link" (click)="getNotification()" tabindex="0" ngbDropdownToggle id="navNotification"
+            role="button" style="outline: none;">
+            <img src="assets/icon/notification.png" height="25px" />
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navNotification" class="dropdown-menu">
+            <span *ngIf="notifications">
+              <a ngbDropdownItem class="notification-box" *ngFor="let noti of notifications; let i = index" [href]="noti.link"
+                [ngStyle]="{'background': noti.read ? '' : 'whitesmoke'}" (click)="read(i)">
+                <span style="float: right;"> {{ noti.date }}</span><br>
+                <span class="notification-title-box">{{ noti.title }}</span>
+                <!-- <hr width="100%"> -->
+              </a>
+            </span>
+            <span *ngIf="!notifications">
+              <div class="spinner-border text-info text-center" role="status">
+                <span class="sr-only notification-title-box">Loading...</span>
+              </div>
+            </span>
+          </div>
         </li>
         <li class="nav-item iconMobile" *ngIf="user">
           <a class="nav-link" href="#" (click)="$event.preventDefault()">ตั้งค่า</a>
@@ -58,8 +82,8 @@
     <div ngbDropdown class="d-inline-block iconDesktop" *ngIf="user">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-right">
-          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
-            <img src="assets/icon/person.png" height="30px" />
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button" style="outline: none;">
+            <img src="assets/icon/person1.png" height="25px" />
           </a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
             <a ngbDropdownItem disabled>สวัสดีคุณ {{ user.firstName }}</a>
