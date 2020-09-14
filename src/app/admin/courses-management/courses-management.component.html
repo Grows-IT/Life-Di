@@ -20,7 +20,7 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <a mat-button (click)="courseOpen()" [ngStyle]="{'color': isCouseOpen ? 'red' : ''}"
+      <a mat-button (click)="courseOpen()" [ngStyle]="{'color': isCourseOpen ? 'red' : ''}"
         style="padding: 6px; margin-right: 5px;">
         คอร์สที่เปิดลงทะเบียน
       </a>
@@ -32,7 +32,7 @@
     <div class="col-6">
       <!-- <form class="form-inline float-right"> -->
       <div>
-        <input type="text" class="form-control" placeholder="ค้นหาคอร์ส" style="width: 70%; float: right;" />
+        <input type="text" class="form-control" placeholder="ค้นหาคอร์ส" style="width: 70%; float: right;"/>
       </div>
       <!-- </form> -->
     </div>
@@ -55,7 +55,7 @@
           </tr>
         </thead>
         <!-- <tbody *ngIf="isCouseOpen"> -->
-        <tbody *ngIf="isCouseOpen">
+        <tbody *ngIf="isCourseOpen">
           <tr *ngFor="let course of coursesOpen">
             <td>
               {{course.aboutCourse.courseBy.name}}
@@ -84,7 +84,7 @@
               </a>
             </td>
             <td>
-              <a mat-icon-button (click)="edit(course)">
+              <a mat-icon-button (click)="openLesson(course)">
                 <mat-icon>create</mat-icon>
               </a>
             </td>
@@ -193,5 +193,44 @@
     <!-- <pre>
     {{modalData?.course|json}}
     </pre> -->
+  </div>
+</ng-template>
+
+<ng-template #modalLessonContent let-close="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title">จัดการบทเรียน</h5>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div><a class="btn btn-primary float-right" style="margin: 10px 20px" href="admin/courses-management/lessons-management">
+    เพิ่มบทเรียน
+  </a></div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="table-responsive" style="max-height: 74vh; border: 1px solid #dee2e6; width: 60%; overflow-y: scroll; margin: 0 auto;">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ชื่อบทเรียน</th>
+              <th>แก้ไขบทเรียน</th>
+            </tr>
+          </thead>
+          <!-- <tbody *ngIf="isCouseOpen"> -->
+          <tbody *ngIf="isCourseOpen">
+            <tr *ngFor="let course of coursesOpen">
+              <td>
+                {{course.aboutCourse.courseBy.name}}
+              </td>
+              <td>
+                <a mat-icon-button href="admin/courses-management/lessons-management">
+                  <mat-icon>create</mat-icon>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </ng-template>

@@ -13,6 +13,9 @@ import { SocialUser } from 'angularx-social-login';
 export class CoursesManagementComponent implements OnInit {
   @ViewChild('modalContent', { static: true })
   modalContent: TemplateRef<any>;
+
+  @ViewChild('modalLessonContent', { static: true })
+  modalLessonContent: TemplateRef<any>;
   // tslint:disable-next-line: member-ordering
   modalData: {
     course: any;
@@ -21,7 +24,7 @@ export class CoursesManagementComponent implements OnInit {
   courseForm: FormGroup;
 
   user: SocialUser;
-  isCouseOpen: boolean;
+  isCourseOpen: boolean;
   courses: any;
   coursesClose = [];
   coursesOpen = [];
@@ -44,7 +47,7 @@ export class CoursesManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isCouseOpen = true;
+    this.isCourseOpen = true;
 
     this.coursesManagementService.getCourses().subscribe(courses => {
       this.courses = courses;
@@ -61,16 +64,21 @@ export class CoursesManagementComponent implements OnInit {
   }
 
   courseOpen() {
-    this.isCouseOpen = true;
+    this.isCourseOpen = true;
   }
 
   courseClose() {
-    this.isCouseOpen = false;
+    this.isCourseOpen = false;
   }
 
   edit(course) {
     this.modalData = { course };
     this.modal.open(this.modalContent, { size: 'lg', scrollable: true, centered: true, backdrop: 'static' });
+  }
+
+  openLesson(course){
+    this.modalData = { course };
+    this.modal.open(this.modalLessonContent, { size: 'lg', scrollable: true, centered: true, backdrop: 'static' });
   }
 
   addCourse(): void {
