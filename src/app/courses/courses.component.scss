@@ -9,7 +9,7 @@ h2 {
 
 #buttonSort {
   color: white;
-  background-color: #dd598c;
+  background-color: navy;
   padding: 10px 25px;
   border-radius: 3em;
   border: 0;
@@ -17,26 +17,11 @@ h2 {
 
 .btn:focus {
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(221, 89, 140, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0,0,128,0.25);
 }
 
 #buttonOptions {
   color: #2c4975;
-
-  :hover {
-    background-color: #feeef4;
-    outline-color: #dd598c;
-    color: #2c4975;
-  }
-  // :focus {
-  //   outline-color: #dd598c;
-  //   color: #2c4975;
-  // }
-  :active {
-    background-color: #feeef4;
-    outline-color: #dd598c;
-    color: #2c4975;
-  }
 }
 
 a:hover {
