@@ -24,6 +24,7 @@ import { SystemReportComponent } from './admin/system-report/system-report.compo
 import { TrackingComponent } from './admin/tracking/tracking.component';
 import { CartComponent } from './cart/cart.component';
 import { WebboardComponent } from './webboards/webboard/webboard.component';
+import { LessonsManagementComponent } from './admin/courses-management/lessons-management/lessons-management.component';
 
 
 const routes: Routes = [
@@ -101,6 +102,9 @@ const routes: Routes = [
   }, {
     path: 'webboards/webboard',
     component: WebboardComponent
+  }, {
+    path: 'admin/courses-management/lessons-management',
+    component: LessonsManagementComponent
   }
 ];
 
