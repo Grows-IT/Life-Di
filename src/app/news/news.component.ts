@@ -9,13 +9,17 @@ import { HomeService } from '../home/home.service';
 export class NewsComponent implements OnInit {
 
   constructor(public homeService: HomeService) { }
-
+  isFeedback = false;
   allNews: any;
 
   ngOnInit(): void {
     this.homeService. getNews().subscribe((news) => {
       this.allNews = news;
     });
+  }
+
+  sendFeedback() {
+    this.isFeedback = true;
   }
 
 }

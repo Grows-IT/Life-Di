@@ -145,6 +145,20 @@
       </div>
     </div>
   </div>
+
+  <div class="col-lg-9 col-md-12 text-center" *ngIf="!isFeedback">
+    <p>บทความนี้เป็นประโยชน์กับท่านหรือไม่?</p>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1" [checked]='true'>ใช่</mat-radio-button>
+      <mat-radio-button value="2">ไม่ใช่</mat-radio-button>
+    </mat-radio-group><br>
+    <button mat-stroked-button (click)="sendFeedback()">ส่งความคิดเห็นของท่าน</button><br><br>
+  </div>
+  <div class="col-lg-9 col-md-12 text-center" *ngIf="isFeedback">
+    <h5>ขอบคุณสำหรับความคิดเห็นของท่าน</h5><br><br>
+  </div>
+
+
   <!--suggest md only-->
 
   <div class="d-none d-sm-block text-center">

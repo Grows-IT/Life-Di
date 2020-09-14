@@ -19,6 +19,8 @@ export class LifediNavbarComponent implements OnInit {
     this.authService.getUser().subscribe(user => {
       if (user) {
         this.user = JSON.parse(user);
+      } else {
+        user = null;
       }
     });
     this.path = window.location.pathname;

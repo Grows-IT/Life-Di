@@ -35,6 +35,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -58,7 +59,8 @@ const MaterialComponent = [
   CardsModule,
   ButtonsModule,
   ChartsModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatRadioModule
 ];
 const NGBComponent = [
   NgbModule

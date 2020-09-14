@@ -6,11 +6,14 @@
       <mat-card class="suggestactivity">
         <div class="row">
           <div class="col-12">
-            <h3 class="text-center" style="color: #DD598C;">กิจกรรมแนะนำ</h3>
+            <h3 class="text-center" style="color: white;">กิจกรรมแนะนำ</h3>
             <div style="max-height: 70vh; overflow-y: auto;">
               <mat-card *ngFor="let e of events" style="margin: 15px 10px; border-radius: 10px;">
-                <mat-card-title align="center" style="color: #2c4975;"><h5>{{e.title}} ({{e.price|number}}฿)</h5></mat-card-title>
-                <mat-card-content>{{e.start}} - {{e.end}}</mat-card-content>
+                <mat-card-title align="center" style="color: #2c4975;">
+                  <h5>{{e.title}} ({{e.price|number}}฿)</h5>
+                </mat-card-title>
+                <mat-card-content>{{e.start|date:'d MMMM yyyy : HH:mm'}} - {{e.end|date:'d MMMM yyyy : HH:mm'}}
+                </mat-card-content>
               </mat-card>
             </div>
           </div>
@@ -23,8 +26,19 @@
             Today
           </div> -->
         <div class="col-12" style="margin: 10px 0;">
-          <h3 class="maincolor"><b>ตารางกิจกรรม</b></h3>
-          <div class="text-center" style="display: inline-flex; flex-flow: row wrap; align-items: center;">
+          <h3 style="color: #2c4975;">ตารางกิจกรรม</h3>
+          <div class="row" style="position: absolute; right: 25px; bottom: -30px;">
+            <span
+              style="background-color: rgb(75, 181, 67); width: 8px; height: 8px; border-radius: 50px; margin-top: 9px;"></span>
+            &nbsp; = ลงทะเบียนแล้ว &nbsp;
+            <span
+              style="background-color: rgb(42, 157, 244); width: 8px; height: 8px; border-radius: 50px; margin-top: 9px;"></span>
+            &nbsp; = คอร์สใหม่ &nbsp;
+            <span
+              style="background-color: rgb(255, 0, 0); width: 8px; height: 8px; border-radius: 50px; margin-top: 9px;"></span>
+            &nbsp; = คอร์สเต็ม &nbsp;
+          </div>
+          <div class="text-center" style="display: inline-flex; flex-flow: row wrap; align-items: center; padding-bottom: 5px;">
             <button mat-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
               (viewDateChange)="closeOpenMonthViewDay()">
               <span class="material-icons">

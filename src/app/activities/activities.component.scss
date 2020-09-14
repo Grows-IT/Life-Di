@@ -14,8 +14,8 @@ b {
 button:focus {
   outline: none !important;
 }
-.suggestactivity{
-  background-color: #FFE4E9;
+.suggestactivity {
+  background-color: navy;
   height: 80vh;
   border-radius: 20px;
   margin: 10px 0;
@@ -37,7 +37,7 @@ button:focus {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #DD598C;
+  background: lightgrey;
 }
 // ::-webkit-scrollbar-thumb:window-inactive {
 // background: rgba(255,0,0,0.4);

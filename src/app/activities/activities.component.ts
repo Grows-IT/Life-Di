@@ -134,7 +134,7 @@ export class ActivitiesComponent implements OnInit {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.modal.open(this.modalContent, { size: 'lg', centered: true  });
   }
 
   addEvent(): void {
