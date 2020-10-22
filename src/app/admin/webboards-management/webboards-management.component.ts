@@ -29,4 +29,8 @@ export class WebboardsManagementComponent implements OnInit {
     this.modal.open(this.modalWebboard, { size: 'lg', scrollable: true, centered: true });
   }
 
+  reply() {
+
+  }
+
 }

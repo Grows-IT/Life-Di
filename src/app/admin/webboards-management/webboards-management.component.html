@@ -73,10 +73,13 @@
       <div class="col-12" *ngFor="let comment of modalData?.data.comments">
         <p>
           {{comment.comment}}
+          <a style="float: right;" (click)="reply()">
+            <mat-icon>create</mat-icon>
+          </a>
         </p>
         <hr width="100%">
       </div>
     </div>
-    {{modalData?.data|json}}
+    <!-- {{modalData?.data|json}} -->
   </div>
 </ng-template>

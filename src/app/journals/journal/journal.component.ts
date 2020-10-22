@@ -9,7 +9,7 @@ import { JournalService } from '../journals.service';
 export class JournalComponent implements OnInit {
 
   constructor(public journalService: JournalService) { }
-
+  isFeedback = false;
   journal: any;
 
   ngOnInit(): void {
@@ -17,6 +17,10 @@ export class JournalComponent implements OnInit {
       console.log(jour);
       this.journal = jour;
     });
+  }
+
+  sendFeedback() {
+    this.isFeedback = true;
   }
 
 }
